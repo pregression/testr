@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700');
+@import "button.css";
+@import "input.css";
+@import "colors.css";
+
+html {
+  position: relative;
+  min-height: 100%;
+  max-width: 100%;
+}
+
+body {
+  margin: 0 0 0 0; /* footer height needs to be applied */
+  padding: 0;
+  font-family: 'PT Sans Caption', sans-serif;
+  min-width: 300px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+pre {
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+/* global link styles */
+a {
+    text-decoration: none;
+    color: #0094ff;
+}
+
+a:link {}
+a:visited {}
+
+a:focus,
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+}
+
+.o-full-vh {
+    height: 100vh;
+}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'registration/css/login.css' %}">
+<link rel="stylesheet" href="{% static 'registration/css/code-on.css' %}">
+<link rel="stylesheet" href="{% static 'registration/css/unsplash-credit.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<div class="o-full-vh">
+    <div class="col-xs-12 col-lg-8">
+        {% include 'registration/partials/login_form.html' %}
+    </div>
+    <div class="col-xs-12 col-lg-4 LoginForm--codeOn">
+        {% include 'registration/partials/code_on.html' %}
+    </div>
+</div>
+
+{% endblock %}

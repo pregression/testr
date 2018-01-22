@@ -1,0 +1,72 @@
+.btn {
+    padding: 0.5em 1em;
+    border: 1px solid transparent;
+    border-radius: 0.2em;
+    font-weight: bold;
+    font-size: 1em;
+    letter-spacing: 0.7px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.12);
+    display: inline-block;
+}
+
+/* Make sure links styled like buttons act like buttons */
+a.btn {
+    color: #0094FF;
+    text-decoration: none;
+}
+
+.btn-primary,
+a.btn-primary {
+    background-color: #0094ff;
+    color: #fff;
+}
+
+.btn-primary:active {
+    background-color: #0061cc;
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: #0094FF;
+}
+
+.btn-secondary:active {
+    background-color: #aaa;
+}
+
+.btn-success {
+    background-color: #008000;
+    color: #fff;
+}
+
+.btn-success:active {
+    background-color: #006400;
+}
+
+.btn-danger {
+    background-color: #cc0000;
+    color: #fff;
+}
+
+.btn-danger:active {
+    background-color: #8b0000;
+}
+
+.btn-warning {
+    background-color: #ffd700;
+    color: #333;
+}
+
+.btn-warning:active {
+    background-color: #daa520;
+}
+
+.btn-info {
+    background-color: #0000cc;
+    color: #fff;
+}
+
+.btn-info:active {
+    background-color: #000066;
+}

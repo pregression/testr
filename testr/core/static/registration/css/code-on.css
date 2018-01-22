@@ -1,0 +1,39 @@
+.CodeOn {
+    height: 100vh;
+    margin-right: -3rem;
+    color: #fff;
+    position: relative;
+    background-image: url(../images/code-on.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
+
+.CodeOn--wrapper {
+    position: absolute;
+    top: 30%;
+    left: 12.5%;
+}
+
+.CodeOn--hdg {
+    margin: auto;
+    margin-bottom: 1.875rem;
+}
+
+.CodeOn--list {
+    padding-left: 1.5rem;
+    list-style-image: url(../images/marker.svg);
+}
+
+.CodeOn--listItem {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+}
+
+.CodeOn--credit {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}

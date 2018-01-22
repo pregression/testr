@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Project</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/app.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/css/bootstrap.min.css' %}">
+        {% block styles %}{% endblock styles %}
+    </head>
+
+    <body>
+    <section class="header">
+        {% block header %}{% endblock header %}
+    </section>
+    <section class="container-fluid">
+        {% block content %}{% endblock content %}
+    </section>
+    <section class="footer">
+        {% block footer %}{% endblock footer %}
+    </section>
+    </body>
+</html>

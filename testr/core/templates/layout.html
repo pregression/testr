@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/css/header.css' %}">
+<link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+{% endblock %}
+
+{% block header %}
+    {% include "core/partials/header.html" %}
+{% endblock %}
+{% block footer %}
+    {% include "core/partials/footer.html" %}
+{% endblock %}

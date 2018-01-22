@@ -1,0 +1,33 @@
+<div class="LoginForm">
+    <div class="LoginForm--wrapper">
+        <div class="LoginForm--banner">
+            <h1 class="LoginForm--hdg">Log into Testr</h1>
+            <h2 class="LoginForm--subHdg">Glad you're back! We missed you.</h2>
+        </div>
+        <form  method="post" action="{% url 'login' %}" class="LoginForm">
+            {% csrf_token %}
+            <div class="LoginForm--inputGroup">
+                <!--<label>-->
+                <!--<span class="LoginForm&#45;&#45;inputGroupLabel">Email</span>-->
+                <!--<input class="LoginForm&#45;&#45;inputGroupInput" type="text" placeholder="Email" name="email" value={this.state.email} />-->
+                <!--</label>-->
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="LoginForm--inputGroup">
+                <!--<label>-->
+                <!--<span class="LoginForm&#45;&#45;inputGroupLabel">Email</span>-->
+                <!--<input class="LoginForm&#45;&#45;inputGroupInput" type="text" placeholder="Email" name="email" value={this.state.email} />-->
+                <!--</label>-->
+                {{ form.password.label_tag }}
+                <span class="LoginForm--forgotPassword">
+                    <a href="{% url 'password_reset' %}">Forgot password?</a>
+                </span>
+                {{ form.password }}
+            </div>
+            <input class="btn btn-primary LoginForm--submit" type="submit" value="Log in" />
+            <div class="LoginForm--agreement">By logging in you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.</div>
+            <div class="LoginForm--signUp">Don't have an account? <a href="/register">Sign Up</a>.</div>
+        </form>
+    </div>
+</div>
