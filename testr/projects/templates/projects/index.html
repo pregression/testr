@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'projects/css/projects.css' %}">
+{% endblock %}
+
 {% block content %}
 <h1>Projects</h1>
 {{ projects }}

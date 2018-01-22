@@ -5,6 +5,7 @@
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/app.css' %}">
         <link rel="stylesheet" href="{% static 'vendor/css/bootstrap.min.css' %}">
+        {% block layoutstyles %}{% endblock layoutstyles %}
         {% block styles %}{% endblock styles %}
     </head>
 
