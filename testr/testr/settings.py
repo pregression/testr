@@ -85,11 +85,11 @@ WSGI_APPLICATION = 'testr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testr',
-        'USER': 'testr',
-        'PASSWORD': 'testr',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': os.environ.get('DB_NAME', 'testr'),
+        'USER': os.environ.get('DB_USER', 'testr'),
+        'PASSWORD': os.environ.get('DB_PASS', 'testr'),
+        'HOST': os.environ.get('DB_HOST', '127.0.0.1'),
+        'PORT': os.environ.get('DB_PORT', '3306'),
     }
 }
 

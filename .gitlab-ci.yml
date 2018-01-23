@@ -10,7 +10,8 @@ services:
   - mysql:latest
 
 variables:
-  MYSQL_DATABASE: database_name
+  MYSQL_DATABASE: testr
+  MYSQL_ROOT_PASSWORD: mysql
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
@@ -26,24 +27,11 @@ before_script:
   # - apt-get update -q && apt-get install nodejs -yqq
   - pip install -r requirements.txt
 
-# To get Django tests to work you may need to create a settings file using
-# the following DATABASES:
-# 
-# DATABASES = {
-#     'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'ci',
-#        'USER': 'postgres',
-#        'PASSWORD': 'postgres',
-#        'HOST': 'postgres',
-#        'PORT': '5432',
-#    },
-# }
-#
-# and then adding `--settings app.settings.ci` (or similar) to the test command
-
 test:
   variables:
-    DATABASE_URL: "mysql://mysql:mysql@mysql:3306/$MYSQL_DATABASE"
+    DB_NAME: $MYSQL_DATABASE
+    DB_USER: root
+    DB_PASS: $MYSQL_ROOT_PASSWORD
+    DB_HOST: mysql
   script:
-  - python manage.py test
+  - python ./testr/manage.py test
