@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'custom_auth.apps.CustomAuthConfig',
+    'marketing.apps.MarketingConfig',
     'projects.apps.ProjectsConfig',
 ]
 
