@@ -5,7 +5,7 @@ ESTABLISHED_YEAR = 2018
 
 def current_year(request):
     return {
-        'current_year': now().year,
+        'current_year': __get_current_year(),
     }
 
 
@@ -16,12 +16,16 @@ def established_year(request):
 
 
 def formatted_copyright_year(request):
-    y = now().year
+    y = __get_current_year()
     e = ESTABLISHED_YEAR
-    formatted = y
+    formatted = str(y)
     if y > e:
         formatted = '{} - {}'.format(e, y)
 
     return {
         'formatted_copyright_year': formatted,
     }
+
+
+def __get_current_year():
+    return now().year
