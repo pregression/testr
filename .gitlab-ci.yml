@@ -34,4 +34,5 @@ test:
     DB_PASS: $MYSQL_ROOT_PASSWORD
     DB_HOST: mysql
   script:
-  - python ./testr/manage.py test
+  - cd ./testr
+  - python manage.py test
