@@ -35,4 +35,5 @@ test:
     DB_HOST: mysql
   script:
   - cd ./testr
-  - python manage.py test
+  - coverage run --source='.' manage.py test
+  - coverage report
