@@ -1,8 +1,9 @@
 from unittest import mock
+from django.conf import settings
 from django.test import TestCase, RequestFactory
-from django.utils.timezone import now, datetime
+from django.utils.timezone import now
 
-from core.context_processors import current_year, established_year, formatted_copyright_year
+from core.context_processors import current_year, established_year, formatted_copyright_year, app_name
 
 
 class CurrentYearTests(TestCase):
@@ -44,3 +45,12 @@ class FormattedCopyRightYearTests(TestCase):
         data = formatted_copyright_year(request)
         self.assertEqual(data['formatted_copyright_year'], '2018 - %s' % yr)
 
+
+class AppNameTests(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_app_name_is_read_from_settings(self):
+        request = self.factory.get('/')
+        data = app_name(request)
+        self.assertEqual(settings.APP_NAME, data['app_name'])

@@ -1,13 +1,13 @@
 <footer class="Footer">
     <div>
-        <div class="Footer--copyright">&copy; {{ formatted_copyright_year }} Testr</div>
+        <div class="Footer--copyright">&copy; {{ formatted_copyright_year }} {{ app_name }}</div>
         <div class="Footer--terms">
             <a href="/terms">Terms</a>
         </div>
     </div>
     <div class="Footer--links">
         <div>
-            Testr is licensed under <a href="{% url 'license' %}">GPLv3</a>
+            {{ app_name }} is licensed under <a href="{% url 'license' %}">GPLv3</a>
         </div>
     </div>
 </footer>

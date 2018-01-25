@@ -1,6 +1,5 @@
 from django.utils.timezone import now
-
-ESTABLISHED_YEAR = 2018
+from django.conf import settings
 
 
 def current_year(request):
@@ -11,19 +10,25 @@ def current_year(request):
 
 def established_year(request):
     return {
-        'established_year': ESTABLISHED_YEAR,
+        'established_year': settings.ESTABLISHED_YEAR,
     }
 
 
 def formatted_copyright_year(request):
     y = __get_current_year()
-    e = ESTABLISHED_YEAR
+    e = settings.ESTABLISHED_YEAR
     formatted = str(y)
     if y > e:
         formatted = '{} - {}'.format(e, y)
 
     return {
         'formatted_copyright_year': formatted,
+    }
+
+
+def app_name(request):
+    return {
+        'app_name': settings.APP_NAME,
     }
 
 

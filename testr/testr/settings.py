@@ -30,7 +30,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+APP_NAME = 'Testr'
+ESTABLISHED_YEAR = 2018
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -71,6 +72,7 @@ TEMPLATES = [
                 'core.context_processors.current_year',
                 'core.context_processors.established_year',
                 'core.context_processors.formatted_copyright_year',
+                'core.context_processors.app_name',
             ],
         },
     },

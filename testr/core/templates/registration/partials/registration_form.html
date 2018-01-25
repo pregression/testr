@@ -2,7 +2,7 @@
     <div class="LoginForm">
         <div class="LoginForm--banner">
             <h1 class="LoginForm--hdg">Let's get started</h1>
-            <h2 class="LoginForm--subHdg">Get up and running with Testr in minutes.</h2>
+            <h2 class="LoginForm--subHdg">Get up and running with {{ app_name }} in minutes.</h2>
         </div>
         <form  method="post" action="{% url 'register' %}" class="LoginForm">
             {% csrf_token %}
