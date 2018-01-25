@@ -60,6 +60,10 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
+    def __init__(self, request=None, *args, **kwargs):
+        super().__init__(request, *args, **kwargs)
+        self.label_suffix = ''
+
 
 class UserChangeForm(forms.ModelForm):
     """

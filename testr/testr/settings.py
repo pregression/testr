@@ -155,4 +155,7 @@ WHITELIST_ROUTES = [
     '/admin/',
     '/admin/login/',
     '/accounts/password_reset/',
+    '/accounts/register/',
+    '/terms/',
+    '/privacy/',
 ]
