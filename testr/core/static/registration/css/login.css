@@ -5,8 +5,9 @@
 }
 
 .LoginForm--wrapper {
-    position: absolute;
-    top: 10%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
 }
 
 .LoginForm--banner {
@@ -36,10 +37,9 @@
     text-align: left;
 }
 
-.LoginForm--inputGroup > input {
+.LoginForm--inputGroupInput > input {
     width: 100%;
     height: 2rem;
-    font-size: 1.25rem;
     padding: 0.2rem 0.6rem;
 }
 
@@ -50,11 +50,10 @@
 
 .LoginForm--forgotPassword {
     float: right;
-    margin-right: -1.3rem;
 }
 
 .LoginForm--submit {
-    min-width: 105%;
+    width: 100%;
     margin-top: 1rem;
 }
 

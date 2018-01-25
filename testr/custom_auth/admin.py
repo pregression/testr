@@ -1,10 +1,29 @@
 from django import forms
 from django.contrib import admin
-from django.contrib.auth.models import  Group
+from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.contrib.auth.forms import \
+    ReadOnlyPasswordHashField, \
+    AuthenticationForm as BaseAuthenticationForm \
 
 from .models import User
+
+
+class AuthenticationForm(BaseAuthenticationForm):
+    """
+    A form for logging in a user.
+    """
+    password = forms.CharField(
+        label='Password',
+        strip=False,
+        widget=forms.PasswordInput(attrs={
+            'class': 'LoginForm--inputGroupInput'
+        }),
+    )
+
+    def __init__(self, request=None, *args, **kwargs):
+        super().__init__(request, *args, **kwargs)
+        self.label_suffix = ''
 
 
 class UserCreationForm(forms.ModelForm):
@@ -12,7 +31,9 @@ class UserCreationForm(forms.ModelForm):
     A form for creating new users
     Includes all the required fields, plus a repeated password.
     """
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={
+        'class': 'LoginForm--inputGroupInput'
+    }))
     password_confirmation = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
     class Meta:
