@@ -5,9 +5,10 @@
     bottom: 0;
     height: 3rem;
     color: #666;
+    background-color: #fff;
     border-top: 1px solid #E7EBF3;
     padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-bottom: 0.75;
     padding: 0.75rem 2rem;
     display: flex;
     align-items: center;
