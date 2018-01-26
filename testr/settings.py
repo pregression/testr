@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
+    'testr-staging.herokuapp.com',
 ]
 
 # Application definition
