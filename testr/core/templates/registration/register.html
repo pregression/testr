@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
-{% block styles %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'registration/css/login.css' %}">
-<link rel="stylesheet" href="{% static 'registration/css/code-on.css' %}">
-<link rel="stylesheet" href="{% static 'registration/css/unsplash-credit.css' %}">
-{% endblock %}
 
 {% block content %}
+{% load compress %}
+{% compress css file %}
+<link rel="stylesheet" href="/static/registration/css/login.css">
+<link rel="stylesheet" href="/static/registration/css/code-on.css">
+<link rel="stylesheet" href="/static/registration/css/unsplash-credit.css">
+{% endcompress %}
+
 {% if form.errors %}
     {% for e in form.errors %}
         {{ e }}

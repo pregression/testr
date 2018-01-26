@@ -26,8 +26,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'wz19muz&ln!2^b=3fb5^90ni5&f7fgm4p)umo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'localhost',
+]
 
 # Application definition
 APP_NAME = 'Testr'
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'custom_auth.apps.CustomAuthConfig',
     'marketing.apps.MarketingConfig',
     'projects.apps.ProjectsConfig',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -147,6 +149,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
 
 # Override login redirect
 LOGIN_REDIRECT_URL = '/projects'
@@ -161,3 +168,19 @@ WHITELIST_ROUTES = [
     '/terms/',
     '/privacy/',
 ]
+
+# Compressor setup
+COMPRESS_ENABLED = True
+
+COMPRESS_OFFLINE = os.environ.get('COMPRESS_ASSETS', False)
+
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.rCSSMinFilter',
+]
+
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter',
+]
+
+COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'

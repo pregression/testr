@@ -1,6 +1,9 @@
+{% load compress %}
+{% compress css file header %}
+<link rel="stylesheet" href="/static/core/css/header.css">
+{% endcompress %}
 <header>
     <div class="Nav">
-        <Logo />
         <div class="NavSection--right">
         </div>
     </div>

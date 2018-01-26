@@ -1,11 +1,13 @@
 {% extends "layout.html" %}
 
-{% block styles %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'projects/css/projects.css' %}">
-{% endblock %}
 
 {% block content %}
+{% load compress %}
+{% compress css file %}
+<link rel="stylesheet" href="/static/projects/css/projects.css">
+{% endcompress %}
+
 <h1>Projects</h1>
 {{ projects }}
+
 {% endblock %}

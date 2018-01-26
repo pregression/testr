@@ -1,3 +1,7 @@
+{% load compress %}
+{% compress css file %}
+<link rel="stylesheet" href="/static/core/css/footer.css">
+{% endcompress %}
 <footer class="Footer">
     <div>
         <div class="Footer--copyright">&copy; {{ formatted_copyright_year }} {{ app_name }}</div>

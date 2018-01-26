@@ -1,7 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700');
-@import "button.css";
-@import "input.css";
-@import "colors.css";
 
 html {
   position: relative;
@@ -10,10 +7,14 @@ html {
 }
 
 body {
-  margin: 0 0 3rem 0 !important; /* footer height needs to be applied */
   padding: 0;
   font-family: 'PT Sans Caption', sans-serif;
   min-width: 300px;
+}
+
+section.content {
+  margin: 0 0 3rem 0 !important;
+  padding-top: 3rem;
 }
 
 pre {

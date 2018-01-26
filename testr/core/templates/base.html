@@ -2,18 +2,21 @@
 <html>
     <head>
         <title>My Project</title>
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/app.css' %}">
-        <link rel="stylesheet" href="{% static 'vendor/css/bootstrap.min.css' %}">
-        {% block layoutstyles %}{% endblock layoutstyles %}
-        {% block styles %}{% endblock styles %}
+        {% load compress %}
+        {% compress css file %}
+        <link rel="stylesheet" href="/static/css/app.css">
+        <link rel="stylesheet" href="/static/css/button.css">
+        <link rel="stylesheet" href="/static/css/colors.css">
+        <link rel="stylesheet" href="/static/css/input.css">
+        <link rel="stylesheet" href="/static/vendor/css/bootstrap.min.css">
+        {% endcompress %}
     </head>
 
     <body>
     <section class="header">
         {% block header %}{% endblock header %}
     </section>
-    <section class="container-fluid">
+    <section class="container-fluid content">
         {% block content %}{% endblock content %}
     </section>
     <section class="footer">
