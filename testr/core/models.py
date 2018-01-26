@@ -1,6 +1,6 @@
 from django.db import models
 
-from custom_auth.models import User
+from testr.custom_auth.models import User
 
 class Owner(models.Model):
     user_id = models.ForeignKey(

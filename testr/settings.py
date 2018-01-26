@@ -40,22 +40,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core.apps.CoreConfig',
-    'custom_auth.apps.CustomAuthConfig',
-    'marketing.apps.MarketingConfig',
-    'projects.apps.ProjectsConfig',
+    'testr.core.apps.CoreConfig',
+    'testr.custom_auth.apps.CustomAuthConfig',
+    'testr.marketing.apps.MarketingConfig',
+    'testr.projects.apps.ProjectsConfig',
     'compressor',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'core.middleware.AuthRequiredMiddleware',
+    'testr.core.middleware.AuthRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'testr.urls'
@@ -71,10 +72,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'core.context_processors.current_year',
-                'core.context_processors.established_year',
-                'core.context_processors.formatted_copyright_year',
-                'core.context_processors.app_name',
+                'testr.core.context_processors.current_year',
+                'testr.core.context_processors.established_year',
+                'testr.core.context_processors.formatted_copyright_year',
+                'testr.core.context_processors.app_name',
             ],
         },
     },

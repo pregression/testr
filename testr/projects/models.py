@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
 
-from custom_auth.models import User
+from testr.custom_auth.models import User
 
 
 class Project(models.Model):
