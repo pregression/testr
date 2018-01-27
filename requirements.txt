@@ -7,12 +7,14 @@ Django==2.0.1
 django-appconf==1.0.2
 django-compressor==2.2
 django-dotenv==1.4.2
-django-htmlmin==0.10.0
+django-pylibmc==0.6.1
 gunicorn==19.7.1
 html5lib==1.0.1
 mysqlclient==1.3.12
 pycparser==2.18
+pylibmc==1.5.2
 python-decouple==3.1
+python-memcached==1.59
 pytz==2017.3
 rcssmin==1.0.6
 rjsmin==1.0.12

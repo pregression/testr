@@ -53,15 +53,15 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'htmlmin.middleware.HtmlMinifyMiddleware',
-    'htmlmin.middleware.MarkRequestMiddleware',
     'testr.core.middleware.AuthRequiredMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'testr.urls'
@@ -98,6 +98,19 @@ DATABASES = {
         default='mysql://testr:testr@localhost:3306/testr',
         cast=db_url,
     ),
+}
+
+# Caching setup
+CACHES = {
+    'default': {
+        'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
+        'LOCATION': config('MEMCACHE_SERVERS', default="localhost:11211"),
+        'BINARY': True,
+        'OPTIONS': {
+            'ketama': True,
+            'tcp_nodelay': True,
+        },
+    },
 }
 
 ## Custom User Model
