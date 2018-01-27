@@ -103,13 +103,8 @@ DATABASES = {
 # Caching setup
 CACHES = {
     'default': {
-        'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': config('MEMCACHE_SERVERS', default="localhost:11211"),
-        'BINARY': True,
-        'OPTIONS': {
-            'ketama': True,
-            'tcp_nodelay': True,
-        },
     },
 }
 
