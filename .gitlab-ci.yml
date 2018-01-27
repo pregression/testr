@@ -31,7 +31,6 @@ test:
   variables:
     DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@myql:3306/$MYSQL_DATABASE
   script:
-  - cd ./testr
   - coverage run --source='.' manage.py test
   - coverage report
 
