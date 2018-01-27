@@ -12,6 +12,7 @@ services:
 variables:
   MYSQL_DATABASE: testr
   MYSQL_ROOT_PASSWORD: mysql
+  MYSQL_HOST: mysql
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
@@ -29,7 +30,7 @@ before_script:
 
 test:
   variables:
-    DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@myql:3306/$MYSQL_DATABASE
+    DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@$MYSQL_HOST:3306/$MYSQL_DATABASE
   script:
   - coverage run --source='.' manage.py test
   - coverage report
