@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 from django.conf import settings
+from dj_database_url import parse as db_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'wz19muz&ln!2^b=3fb5^90ni5&f7fgm4p)umou%@8f)@+a$z%7')
+SECRET_KEY = config('SECRET_KEY', default='secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -57,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
     'testr.core.middleware.AuthRequiredMiddleware',
 ]
 
@@ -89,14 +93,11 @@ WSGI_APPLICATION = 'testr.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME', 'testr'),
-        'USER': os.environ.get('DB_USER', 'testr'),
-        'PASSWORD': os.environ.get('DB_PASS', 'testr'),
-        'HOST': os.environ.get('DB_HOST', '127.0.0.1'),
-        'PORT': os.environ.get('DB_PORT', '3306'),
-    }
+    'default': config(
+        'DATABASE_URL',
+        default='mysql://testr:testr@localhost:3306/testr',
+        cast=db_url,
+    ),
 }
 
 ## Custom User Model
@@ -174,7 +175,7 @@ WHITELIST_ROUTES = [
 # Compressor setup
 COMPRESS_ENABLED = True
 
-COMPRESS_OFFLINE = os.environ.get('COMPRESS_ASSETS', False)
+COMPRESS_OFFLINE = config('COMPRESS_ASSETS', default=False, cast=bool)
 
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',

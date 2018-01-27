@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>My Project</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         {% load compress %}
-        {% compress css file %}
+        {% compress css inline %}
         <link rel="stylesheet" href="/static/css/app.css">
         <link rel="stylesheet" href="/static/css/button.css">
         <link rel="stylesheet" href="/static/css/colors.css">
