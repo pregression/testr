@@ -29,11 +29,28 @@ before_script:
 
 test:
   variables:
-    DB_NAME: $MYSQL_DATABASE
-    DB_USER: root
-    DB_PASS: $MYSQL_ROOT_PASSWORD
-    DB_HOST: mysql
+    DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@myql:3306/$MYSQL_DATABASE
   script:
   - cd ./testr
   - coverage run --source='.' manage.py test
   - coverage report
+
+staging:
+  type: deploy
+  only:
+    - master
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_STAGING_APP --api-key=$HEROKU_STAGING_API_KEY
+
+production:
+  type: deploy
+  only:
+    - tags
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_PRODUCTION_APP --api-key=$HEROKU_PRODUCTION_API_KEY
