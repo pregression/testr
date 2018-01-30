@@ -10,9 +10,7 @@
 {% endcompress %}
 
 {% if form.errors %}
-    {% for e in form.errors %}
-        {{ e }}
-    {% endfor %}
+    {{ form.errors }}
 {% endif %}
 
 

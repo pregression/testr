@@ -9,16 +9,12 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            data = form.data
-
-            user = User.objects.create(
-                username=data.get('username'),
-                email=data.get('email'),
-                password=data.get('password'),
-            )
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
 
             if user is not None:
-                auth = authenticate(request, username=user.username, password=user.password)
+                auth = authenticate(request, email=user.email, password=form.cleaned_data['password'])
                 login(request, auth)
                 return redirect(reverse('home'))
     else:
