@@ -181,8 +181,6 @@ WHITELIST_ROUTES = [
 ]
 
 # Compressor setup
-COMPRESS_ENABLED = True
-
 COMPRESS_OFFLINE = config('COMPRESS_ASSETS', default=False, cast=bool)
 
 COMPRESS_CSS_FILTERS = [

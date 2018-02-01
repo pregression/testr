@@ -65,6 +65,10 @@
     margin-top: 1.25rem;
 }
 
+.LoginForm--codeOn {
+    padding-right: 0;
+}
+
 @media screen and (max-width: 75em) {
     .LoginForm--codeOn {
         display: none;

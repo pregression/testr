@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% load compress %}
-        {% compress css inline %}
+        {% compress css file %}
         <link rel="stylesheet" href="/static/css/app.css">
         <link rel="stylesheet" href="/static/css/button.css">
         <link rel="stylesheet" href="/static/css/colors.css">
@@ -13,16 +13,10 @@
         <link rel="stylesheet" href="/static/vendor/css/bootstrap.min.css">
         {% endcompress %}
     </head>
-
     <body>
-    <section class="header">
-        {% block header %}{% endblock header %}
-    </section>
-    <section class="container-fluid content">
-        {% block content %}{% endblock content %}
-    </section>
-    <section class="footer">
-        {% block footer %}{% endblock footer %}
-    </section>
+    {% block layout %}
+    {% endblock layout %}
+    {% block chromeless %}
+    {% endblock chromeless %}
     </body>
 </html>

@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 
-
-{% block content %}
+{% block chromeless %}
 {% load compress %}
-{% compress css inline %}
+{% compress css file %}
 <link rel="stylesheet" href="/static/registration/css/login.css">
 <link rel="stylesheet" href="/static/registration/css/code-on.css">
 <link rel="stylesheet" href="/static/registration/css/unsplash-credit.css">
@@ -13,7 +12,6 @@
     {{ form.errors }}
 {% endif %}
 
-
 <div class="o-full-vh">
     <div class="col-xs-12 col-lg-8">
         {% include 'registration/partials/registration_form.html' %}
@@ -22,4 +20,5 @@
         {% include 'registration/partials/code_on.html' %}
     </div>
 </div>
+
 {% endblock %}

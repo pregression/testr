@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# https://github.com/nigma/heroku-django-cookbook/blob/master/bin/post_compile
+set -eo pipefail
+
+# The post_compile hook is run by heroku-buildpack-python
+
+echo "-----> I'm post-compile hook"
+
+if [ -f bin/run_collectstatic ]; then
+    echo "-----> Running run_collectstatic"
+    chmod +x bin/run_collectstatic
+    bin/run_collectstatic
+fi
+
+if [ -f bin/run_compress ]; then
+    echo "-----> Running run_compress"
+    chmod +x bin/run_compress
+    bin/run_compress
+fi
+
+echo "-----> Post-compile done"

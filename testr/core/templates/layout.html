@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
-{% block header %}
+{% block layout %}
+<section class="header">
     {% include "core/partials/header.html" %}
-{% endblock %}
-{% block footer %}
+</section>
+<section class="container-fluid content">
+    {% block content %}{% endblock content %}
+</section>
+<section class="footer">
     {% include "core/partials/footer.html" %}
-{% endblock %}
+</section>
+{% endblock layout %}
