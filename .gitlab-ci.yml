@@ -3,39 +3,36 @@
 # https://hub.docker.com/r/library/python
 image: python:3.6
 
-# Pick zero or more services to be used on all builds.
-# Only needed when using a docker container to run your tests in.
-# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-a-service
-services:
-  - mysql:latest
-
-variables:
-  MYSQL_DATABASE: testr
-  MYSQL_ROOT_PASSWORD: mysql
-  MYSQL_HOST: mysql
-
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
   paths:
   - ~/.cache/pip/
 
-# This is a basic example for a gem or script which doesn't use
-# services such as redis or postgres
-before_script:
+stages:
+  - build
+  - test
+  - deploy
+
+test:
+  stage: test
+  services:
+    - mysql:latest
+  variables:
+    DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@$MYSQL_HOST:3306/$MYSQL_DATABASE
+    MYSQL_DATABASE: testr
+    MYSQL_ROOT_PASSWORD: mysql
+    MYSQL_HOST: mysql
+  script:
   - python -V                                   # Print out python version for debugging
   # Uncomment next line if your Django app needs a JS runtime:
   # - apt-get update -q && apt-get install nodejs -yqq
   - pip install -r requirements.txt
-
-test:
-  variables:
-    DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@$MYSQL_HOST:3306/$MYSQL_DATABASE
-  script:
   - coverage run --source='.' manage.py test
   - coverage report
 
 staging:
+  stage: deploy
   type: deploy
   only:
     - master
@@ -46,6 +43,7 @@ staging:
     - dpl --provider=heroku --app=$HEROKU_STAGING_APP --api-key=$HEROKU_STAGING_API_KEY
 
 production:
+  stage: deploy
   type: deploy
   only:
     - tags
