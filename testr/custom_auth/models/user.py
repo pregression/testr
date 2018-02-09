@@ -12,7 +12,7 @@ class User(AbstractUser):
 
     email = models.EmailField(
         verbose_name='email',
-        max_length=255,
+        max_length=191,
         unique=True,
     )
     is_active = models.BooleanField(default=True)
