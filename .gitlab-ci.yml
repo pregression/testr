@@ -14,7 +14,7 @@ stages:
   - test
   - deploy
 
-test:
+unit:
   stage: test
   services:
     - mysql:latest
@@ -30,6 +30,21 @@ test:
   - pip install -r requirements.txt
   - coverage run --source='.' manage.py test
   - coverage report
+
+ui:
+  stage: test
+  services:
+    - mysql:latest
+  variables:
+    DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@$MYSQL_HOST:3306/$MYSQL_DATABASE
+    MYSQL_DATABASE: testr
+    MYSQL_ROOT_PASSWORD: mysql
+    MYSQL_HOST: mysql
+  script:
+  - python -V                                   # Print out python version for debugging
+  # Uncomment next line if your Django app needs a JS runtime:
+  # - apt-get update -q && apt-get install nodejs -yqq
+  - pip install -r requirements.txt
   - python manage.py behave
 
 staging:
