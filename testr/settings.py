@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'testr.marketing.apps.MarketingConfig',
     'testr.projects.apps.ProjectsConfig',
     'compressor',
+    'behave_django',
 ]
 
 MIDDLEWARE = [

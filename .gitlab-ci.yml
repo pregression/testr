@@ -30,6 +30,7 @@ test:
   - pip install -r requirements.txt
   - coverage run --source='.' manage.py test
   - coverage report
+  - python manage.py behave
 
 staging:
   stage: deploy
