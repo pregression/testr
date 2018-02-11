@@ -15,7 +15,7 @@ class UserTestCase(TestCase):
             u.save()
         except IntegrityError as e:
             caught = True
-            self.assertEqual(str(e), "(1062, \"Duplicate entry 'foo@bar.com' for key 'email'\")")
+            self.assertTrue(len([x for x in str(e).split(' ') if x == 'duplicate']))
         finally:
             self.assertTrue(caught)
 

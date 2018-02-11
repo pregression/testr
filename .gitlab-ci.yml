@@ -17,12 +17,13 @@ stages:
 unit:
   stage: test
   services:
-    - mysql:latest
+    - postgres:latest
   variables:
-    DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@$MYSQL_HOST:3306/$MYSQL_DATABASE
-    MYSQL_DATABASE: testr
-    MYSQL_ROOT_PASSWORD: mysql
-    MYSQL_HOST: mysql
+    POSTGRES_DB: nice_marmot
+    POSTGRES_USER: runner
+    POSTGRES_PASSWORD: ""
+    POSTGRES_HOST: postgres
+    DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
   - python -V                                   # Print out python version for debugging
   # Uncomment next line if your Django app needs a JS runtime:
@@ -34,12 +35,13 @@ unit:
 ui:
   stage: test
   services:
-    - mysql:latest
+    - postgres:latest
   variables:
-    DATABASE_URL: mysql://root:$MYSQL_ROOT_PASSWORD@$MYSQL_HOST:3306/$MYSQL_DATABASE
-    MYSQL_DATABASE: testr
-    MYSQL_ROOT_PASSWORD: mysql
-    MYSQL_HOST: mysql
+    POSTGRES_DB: nice_marmot
+    POSTGRES_USER: runner
+    POSTGRES_PASSWORD: ""
+    POSTGRES_HOST: postgres
+    DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
   - python -V                                   # Print out python version for debugging
   # Uncomment next line if your Django app needs a JS runtime:

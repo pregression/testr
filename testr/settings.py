@@ -106,7 +106,7 @@ WSGI_APPLICATION = 'testr.wsgi.application'
 DATABASES = {
     'default': config(
         'DATABASE_URL',
-        default='mysql://testr:testr@localhost:3306/testr',
+        default='postgres://testr:testr@localhost:5432/testr',
         cast=db_url,
     ),
 }
