@@ -36,6 +36,8 @@ ALLOWED_HOSTS = [
 # Application definition
 APP_NAME = 'Testr'
 ESTABLISHED_YEAR = 2018
+SITE_ID = 2
+SOCIALACCOUNT_QUERY_EMAIL = True
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,10 +45,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'testr.core.apps.CoreConfig',
     'testr.custom_auth.apps.CustomAuthConfig',
     'testr.marketing.apps.MarketingConfig',
     'testr.projects.apps.ProjectsConfig',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.bitbucket_oauth2',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.gitlab',
+    'allauth.socialaccount.providers.google',
     'compressor',
     'behave_django',
 ]
@@ -102,17 +112,42 @@ DATABASES = {
 }
 
 # Caching setup
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': config('MEMCACHE_SERVERS', default="localhost:11211"),
-    },
-}
+if not DEBUG:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': config('MEMCACHE_SERVERS', default="localhost:11211"),
+        },
+    }
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        }
+    }
 
 ## Custom User Model
 #
 AUTH_USER_MODEL = 'custom_auth.User'
 
+AUTHENTICATION_BACKENDS = (
+    # Needed for local auth
+    'django.contrib.auth.backends.ModelBackend',
+    # Backends to support all sorts of authentication methods from allauth
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_PASSWORD_MIN_LENGTH = 6
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "optional"
+ACCOUNT_LOGIN_ATTEMPTS = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_BLACKLIST = []
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -176,7 +211,8 @@ WHITELIST_ROUTES = [
     '/admin/',
     '/admin/login/',
     '/accounts/password_reset/',
-    '/accounts/register/',
+    '/accounts/signup/',
+    '/accounts/google/login/',
     '/terms/',
     '/privacy/',
 ]

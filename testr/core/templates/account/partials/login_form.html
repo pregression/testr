@@ -1,0 +1,50 @@
+{% load static %}
+{% load socialaccount %}
+<div class="LoginForm--wrapper">
+    <div class="LoginForm">
+        <form  method="post" action="{% url 'account_login' %}" class="LoginForm">
+            {% csrf_token %}
+            <div class="LoginForm--inputGroup">
+                {{ form.login.label_tag }}
+                <div class="LoginForm--inputGroupInput">
+                    {{ form.login }}
+                </div>
+            </div>
+            <div class="LoginForm--inputGroup">
+                {{ form.password.label_tag }}
+                <span class="LoginForm--forgotPassword">
+                    <a href="{% url 'account_reset_password' %}">Forgot password?</a>
+                </span>
+                <div class="LoginForm--inputGroupInput">
+                    {{ form.password }}
+                </div>
+            </div>
+            <div class="LoginForm--inputGroup LoginForm--submissionGroup">
+                <span class="LoginForm--signUp">Need an account? <a href="{% url 'account_signup' %}">Sign Up</a>.</span>
+                <input class="btn btn-primary LoginForm--submit" type="submit" value="LOGIN" />
+            </div>
+        </form>
+        <div class="LoginForm--integrations">
+            <div class="LoginForm--integrationsHdg">
+                <span class="LoginForm--integrationsHdg__line"></span>
+                <span class="LoginForm--integrationsHdg__text">or</span>
+                <span class="LoginForm--integrationsHdg__line"></span>
+            </div>
+            {% get_providers as socialaccount_providers %}
+            {% for provider in socialaccount_providers %}
+            {% if provider.name == "Google" %}
+            <a
+                class="LoginForm--integrations__{{provider.name|lower}}Button"
+                href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
+                <img
+                        class="LoginForm--integrations__{{provider.name|lower}}ButtonImage"
+                        src="{% static 'account/images/google.svg' %}"
+                        alt="{{provider.name}} Logo">
+                <span class="LoginForm--integrations__{{provider.name|lower}}ButtonText">LOGIN WITH {{provider.name|upper}}</span>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="LoginForm--agreement">By using {{ app_name }} you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.</div>
+</div>

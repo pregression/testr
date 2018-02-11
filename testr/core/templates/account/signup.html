@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block chromeless %}
+{% load compress %}
+{% compress css file %}
+<link rel="stylesheet" href="/static/account/css/login.css">
+<link rel="stylesheet" href="/static/account/css/code-on.css">
+<link rel="stylesheet" href="/static/account/css/unsplash-credit.css">
+{% endcompress %}
+
+{% if form.errors %}
+    {{ form.errors }}
+{% endif %}
+
+<div class="o-full-vh">
+    <div class="col-xs-12 col-lg-8">
+        {% include 'account/partials/registration_form.html' %}
+    </div>
+    <div class="col-xs-12 col-lg-4 LoginForm--codeOn">
+        {% include 'account/partials/code_on.html' %}
+    </div>
+</div>
+
+{% endblock %}
