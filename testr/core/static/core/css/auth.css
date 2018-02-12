@@ -1,0 +1,119 @@
+.LoginForm {
+    text-align: center;
+    width: 100%;
+    margin-left: 5px;
+    margin-top: 100px;
+}
+
+.LoginForm--wrapper {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-flow: row wrap
+}
+
+.LoginForm--logo {
+    height: 10rem;
+    margin-bottom: 1.25rem;
+}
+
+.LoginForm--inputGroup {
+    margin: 10px auto;
+    margin-bottom: 0.938rem;
+    text-align: left;
+}
+
+.LoginForm--inputGroupInput > input {
+    width: 100%;
+    height: 2rem;
+    padding: 0.2rem 0.6rem;
+}
+
+.LoginForm--inputGroup > label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.LoginForm--forgotPassword {
+    float: right;
+}
+
+.LoginForm--submit {
+    margin-top: 1rem;
+    padding: 10px 25px;
+}
+
+.LoginForm--submissionGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.LoginForm--agreement {
+    align-self: end;
+    margin-bottom: 30px;
+    margin-left: 15px;
+    color: #666;
+    font-size: 13px;
+}
+
+.LoginForm--signUp {
+    margin-top: 1.25rem;
+}
+
+.LoginForm--codeOn {
+    padding-right: 0;
+}
+
+@media screen and (max-width: 75em) {
+    .LoginForm--codeOn {
+        display: none;
+    }
+}
+
+.LoginForm--integrations {
+}
+
+.LoginForm--integrationsHdg {
+    margin: 30px auto;
+}
+
+.LoginForm--integrationsHdg__line {
+    display: inline-block;
+    width: 40%;
+    background-color: lightgray;
+    height: 1px;
+    vertical-align: middle;
+}
+
+.LoginForm--integrationsHdg__text {
+    display: inline-block;
+    padding: 0 25px;
+}
+
+.LoginForm--integrations__googleButton,
+.LoginForm--integrations__googleButton:hover,
+.LoginForm--integrations__googleButton:active {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px transparent;
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.LoginForm--integrations__googleButtonImage {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.LoginForm--integrations__googleButtonText {
+    display: inline-block;
+    padding: 14px;
+}

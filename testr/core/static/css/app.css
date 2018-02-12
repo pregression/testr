@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto:500');
 
-@import('../core/auth.css');
-@import('../core/code-on.css');
-@import('../core/unsplash-credit.css');
-
 html {
   position: relative;
   min-height: 100%;
