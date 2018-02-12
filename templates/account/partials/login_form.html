@@ -45,5 +45,5 @@
             {% endfor %}
         </div>
     </div>
-    <div class="LoginForm--agreement">By using {{ app_name }} you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.</div>
+    <div class="LoginForm--agreement">By using {{ app_name }} you agree to our <a href="{% url 'terms' %}">Terms of Service</a> and <a href="{% url 'privacy' %}">Privacy Policy</a>.</div>
 </div>
