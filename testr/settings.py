@@ -46,10 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'testr.core.apps.CoreConfig',
-    'testr.custom_auth.apps.CustomAuthConfig',
-    'testr.marketing.apps.MarketingConfig',
-    'testr.projects.apps.ProjectsConfig',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -57,6 +53,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.gitlab',
     'allauth.socialaccount.providers.google',
+    'testr.core.apps.CoreConfig',
+    'testr.custom_auth.apps.CustomAuthConfig',
+    'testr.marketing.apps.MarketingConfig',
+    'testr.projects.apps.ProjectsConfig',
     'compressor',
     'behave_django',
 ]
@@ -195,7 +195,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'public')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
