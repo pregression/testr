@@ -2,11 +2,6 @@
 
 {% block chromeless %}
 {% load compress %}
-{% compress css file %}
-<link rel="stylesheet" href="/static/core/css/auth.css">
-<link rel="stylesheet" href="/static/core/css/code-on.css">
-<link rel="stylesheet" href="/static/core/css/unsplash-credit.css">
-{% endcompress %}
 
 {% if form.errors %}
     {{ form.errors }}
