@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 
 # Application definition
 APP_NAME = 'Testr'
+APP_TITLE_DELIMITER = '|'
 ESTABLISHED_YEAR = 2018
 SITE_ID = 2
 SOCIALACCOUNT_QUERY_EMAIL = True
@@ -92,6 +93,7 @@ TEMPLATES = [
                 'testr.core.context_processors.established_year',
                 'testr.core.context_processors.formatted_copyright_year',
                 'testr.core.context_processors.app_name',
+                'testr.core.context_processors.title_delimiter',
             ],
         },
     },
@@ -215,6 +217,7 @@ WHITELIST_ROUTES = [
     '/accounts/google/login/',
     '/terms/',
     '/privacy/',
+    '/license/',
 ]
 
 # Compressor setup

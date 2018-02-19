@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 
+{% block title %}
+License {{ title_delimiter }} {{ block.super }}
+{% endblock %}
+
 {% block content %}
 <div style="line-height: 1.2;" class="col-xs-6 col-xs-offset-3">
     <h1 style="text-align: center;">GNU AFFERO GENERAL PUBLIC LICENSE</h1>

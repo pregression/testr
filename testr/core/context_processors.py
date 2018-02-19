@@ -32,5 +32,10 @@ def app_name(request):
     }
 
 
+def title_delimiter(request):
+    return {
+        'title_delimiter': settings.APP_TITLE_DELIMITER,
+    }
+
 def __get_current_year():
     return now().year

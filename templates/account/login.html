@@ -1,5 +1,9 @@
 {% extends "application.html" %}
 
+{% block title %}
+Login {{ title_delimiter }} {{ block.super }}
+{% endblock %}
+
 
 {% block chromeless %}
 {% load compress %}

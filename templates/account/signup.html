@@ -1,5 +1,9 @@
 {% extends "application.html" %}
 
+{% block title %}
+Sign Up {{ title_delimiter }} {{ block.super }}
+{% endblock %}
+
 {% block chromeless %}
 {% load compress %}
 {% compress css file %}
