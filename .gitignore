@@ -104,3 +104,8 @@ venv.bak/
 .mypy_cache/
 
 .idea
+.vscode
+
+elm-stuff
+node_modules
+*.js
