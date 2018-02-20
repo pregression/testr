@@ -1,5 +1,12 @@
-{% extends "layout.html" %}
+{% extends "chromeless.html" %}
 
-{% block content %}
+{% block title %}
+Quality Analytics for Quality Assurance {{ title_delimiter }} {{ block.super }}
+{% endblock %}
+
+{% block chromeless %}
 <h1>Home</h1>
+<section class="footer">
+    {% include "core/partials/footer.html" %}
+</section>
 {% endblock %}
