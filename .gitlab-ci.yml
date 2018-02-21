@@ -8,6 +8,8 @@ image: python:3.6
 cache:
   paths:
   - ~/.cache/pip/
+  - ~/node_modules/
+  - ~/elm-stuff/
 
 stages:
   - build
@@ -25,10 +27,11 @@ unit:
     POSTGRES_HOST: postgres
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
-  - python -V                                   # Print out python version for debugging
-  # Uncomment next line if your Django app needs a JS runtime:
-  # - apt-get update -q && apt-get install nodejs -yqq
+  - python -V # Print out python version for debugging
+  - apt-get update -q && apt-get install nodejs -yqq
   - pip install -r requirements.txt
+  - npm install -g elm
+  - elm make frontend/src/Main.elm --output testr/core/static/js/main.js
   - coverage run --source='.' manage.py test
   - coverage report
 
@@ -43,9 +46,10 @@ ui:
     POSTGRES_HOST: postgres
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
-  - python -V                                   # Print out python version for debugging
-  # Uncomment next line if your Django app needs a JS runtime:
-  # - apt-get update -q && apt-get install nodejs -yqq
+  - python -V # Print out python version for debugging
+  - apt-get update -q && apt-get install nodejs -yqq
+  - npm install -g elm
+  - elm make frontend/src/Main.elm --output testr/core/static/js/main.js
   - pip install -r requirements.txt
   - python manage.py behave
 
