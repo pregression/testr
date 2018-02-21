@@ -57,7 +57,7 @@ unit:
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
   - source venv/bin/activate
-  - venv/bin/coverage run --source='.' manage.py test
+  - venv/bin/coverage run --source='./testr' manage.py test
   - venv/bin/coverage report
 
 ui:
