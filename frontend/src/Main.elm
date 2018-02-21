@@ -1,17 +1,31 @@
+module Main exposing (..)
+
 import Html exposing (..)
 
+
 -- MODEL
-type alias Model = { }
+
+
+type alias Model =
+    {}
+
+
 
 -- UPDATE
-type Msg = Reset 
+
+
+type Msg
+    = Reset
+
 
 update : Msg -> Model -> Model
 update msg model =
     case msg of
-        Reset -> model
+        Reset ->
+            model
+
+
 
 -- VIEW
-
 -- view : Model -> Html Msg
--- view model = 
+-- view model =
