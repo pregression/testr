@@ -8,13 +8,42 @@ image: python:3.6
 cache:
   paths:
   - ~/.cache/pip/
-  - ~/node_modules/
-  - ~/elm-stuff/
+  - node_modules/
+  - elm-stuff/
 
 stages:
   - build
   - test
   - deploy
+
+python:
+  stage: build
+  image: python:3.6
+  cache:
+    untracked: true
+  script:
+    - python -V # Print out python version for debugging
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install -r requirements.txt
+  artifacts:
+    paths:
+      - venv/lib/python3.6/site-packages
+      - venv/bin
+
+elm:
+  stage: build
+  image: node:9.4
+  cache:
+    untracked: true
+  script:
+    - npm install elm
+    - node_modules/elm/binwrappers/elm-package install -y
+    - node_modules/elm/binwrappers/elm-make frontend/src/Main.elm --output testr/core/static/js/main.js
+  artifacts:
+    paths:
+      - testr/core/static/js/main.js
 
 unit:
   stage: test
@@ -27,13 +56,9 @@ unit:
     POSTGRES_HOST: postgres
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
-  - python -V # Print out python version for debugging
-  - apt-get update -q && apt-get install nodejs -yqq
-  - pip install -r requirements.txt
-  - npm install -g elm
-  - elm make frontend/src/Main.elm --output testr/core/static/js/main.js
-  - coverage run --source='.' manage.py test
-  - coverage report
+  - source venv/bin/activate
+  - venv/bin/coverage run --source='.' manage.py test
+  - venv/bin/coverage report
 
 ui:
   stage: test
@@ -46,11 +71,7 @@ ui:
     POSTGRES_HOST: postgres
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
-  - python -V # Print out python version for debugging
-  - apt-get update -q && apt-get install nodejs -yqq
-  - npm install -g elm
-  - elm make frontend/src/Main.elm --output testr/core/static/js/main.js
-  - pip install -r requirements.txt
+  - source venv/bin/activate
   - python manage.py behave
 
 staging:
