@@ -56,9 +56,9 @@ unit:
     POSTGRES_HOST: postgres
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
+    - source venv/bin/activate
     - sleep 1
     - ls -al venv/bin
-    - source venv/bin/activate
     - venv/bin/coverage run --source='./testr' manage.py test
     - venv/bin/coverage report
 
@@ -73,9 +73,9 @@ ui:
     POSTGRES_HOST: postgres
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
+    - source venv/bin/activate
     - sleep 1
     - ls -al venv/bin
-    - source venv/bin/activate
     - pip -V # check to see if we're in a virtualenv
     - python manage.py behave
 
