@@ -6,7 +6,7 @@ set -eo pipefail
 
 echo "-----> I'm post-compile hook"
 
-if [ -f bin/install_nodejs]; then
+if [ -f bin/install_nodejs ]; then
     echo "-----> Running install_nodejs"
     chmod +x bin/install_nodejs
     bin/install_nodejs
