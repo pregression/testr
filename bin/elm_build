@@ -9,6 +9,7 @@ echo "-----> Installing Elm"
 npm install elm
 echo "-----> Installing Uglify"
 npm install -g uglify-js
+ln -s -f ../../vendor/node/bin/uglifyjs .heroku/python/bin/uglifyjs
 echo "-----> Installing Elm packages"
 $ELM_BINARIES/elm-package install -y
 echo "-----> Building Elm application"
