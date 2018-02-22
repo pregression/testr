@@ -22,11 +22,6 @@ python:
   cache:
     untracked: true
   script:
-    - python -V # Print out python version for debugging
-    - pip install virtualenv
-    - virtualenv venv
-    - source venv/bin/activate
-    - pip install -r requirements.txt
   artifacts:
     paths:
       - venv/lib/python3.6/site-packages
@@ -56,11 +51,10 @@ unit:
     POSTGRES_HOST: postgres
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
-    - source venv/bin/activate
-    - sleep 1
-    - ls -al venv/bin
-    - venv/bin/coverage run --source='./testr' manage.py test
-    - venv/bin/coverage report
+    - python -V # Print out python version for debugging
+    - pip install -r requirements.txt
+    - coverage run --source='./testr' manage.py test
+    - coverage report
 
 ui:
   stage: test
@@ -73,10 +67,8 @@ ui:
     POSTGRES_HOST: postgres
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
-    - source venv/bin/activate
-    - sleep 1
-    - ls -al venv/bin
-    - pip -V # check to see if we're in a virtualenv
+    - python -V # Print out python version for debugging
+    - pip install -r requirements.txt
     - python manage.py behave
 
 staging:
