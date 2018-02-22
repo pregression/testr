@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+ELM_BINARIES=$BUILD_DIR/node_modules/elm/binwrappers
+BUILD_IN=$BUILD_DIR/frontend/src/Main.elm
+BUILD_OUT=$BUILD_DIR/testr/core/static/js/main.js
+
+echo "-----> Installing Elm"
+npm install elm
+echo "-----> Installing Elm packages"
+$ELM_BINARIES/elm-package install -y
+echo "-----> Building Elm application"
+$ELM_BINARIES/node_modules/elm/binwrappers/elm-make $BUILD_IN --output $BUILD_OUT

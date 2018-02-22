@@ -84,10 +84,7 @@ staging:
   type: deploy
   only:
     - master
-  dependencies:
-    - elm
   script:
-    - ls -al testr/core/static/js
     - apt-get update -qy
     - apt-get install -y ruby ruby-dev
     - gem install dpl
@@ -98,8 +95,6 @@ production:
   type: deploy
   only:
     - tags
-  dependencies:
-    - elm
   script:
     - apt-get update -qy
     - apt-get install -y ruby-dev
