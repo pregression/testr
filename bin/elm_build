@@ -10,4 +10,4 @@ npm install elm
 echo "-----> Installing Elm packages"
 $ELM_BINARIES/elm-package install -y
 echo "-----> Building Elm application"
-$ELM_BINARIES/node_modules/elm/binwrappers/elm-make $BUILD_IN --output $BUILD_OUT
+$ELM_BINARIES/elm-make $BUILD_IN --output $BUILD_OUT
