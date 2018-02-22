@@ -7,7 +7,11 @@ BUILD_OUT=$BUILD_DIR/testr/core/static/js/main.js
 
 echo "-----> Installing Elm"
 npm install elm
+echo "-----> Installing Uglify"
+npm install -g uglify-js
 echo "-----> Installing Elm packages"
 $ELM_BINARIES/elm-package install -y
 echo "-----> Building Elm application"
 $ELM_BINARIES/elm-make $BUILD_IN --output $BUILD_OUT
+echo "-----> Minifying build"
+uglifyjs --compress --mangle -- $BUILD_OUT
