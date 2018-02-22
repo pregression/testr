@@ -73,6 +73,7 @@ ui:
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
     - sleep 1
+    - ls -al venv/bin
     - source venv/bin/activate
     - pip -V # check to see if we're in a virtualenv
     - python manage.py behave
