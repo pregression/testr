@@ -56,9 +56,12 @@ unit:
     POSTGRES_HOST: postgres
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
-  - source venv/bin/activate
-  - venv/bin/coverage run --source='./testr' manage.py test
-  - venv/bin/coverage report
+    - source venv/bin/activate
+    - venv/bin/coverage run --source='./testr' manage.py test
+    - venv/bin/coverage report
+  artifacts:
+    paths:
+      - ./
 
 ui:
   stage: test
@@ -71,8 +74,11 @@ ui:
     POSTGRES_HOST: postgres
     DATABASE_URL: postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB
   script:
-  - source venv/bin/activate
-  - python manage.py behave
+    - source venv/bin/activate
+    - python manage.py behave
+  artifacts:
+    paths:
+      - ./
 
 staging:
   stage: deploy
