@@ -15,4 +15,4 @@ $ELM_BINARIES/elm-package install -y
 echo "-----> Building Elm application"
 $ELM_BINARIES/elm-make $BUILD_IN --output $BUILD_OUT
 echo "-----> Minifying build"
-uglifyjs --compress --mangle --output $BUILD_OUT -- $BUILD_OUT
+uglifyjs --compress --mangle --source-map --output $BUILD_OUT -- $BUILD_OUT
