@@ -87,6 +87,7 @@ staging:
   dependencies:
     - elm
   script:
+    - ls -al testr/core/static/js
     - apt-get update -qy
     - apt-get install -y ruby ruby-dev
     - gem install dpl
