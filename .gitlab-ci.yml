@@ -59,9 +59,6 @@ unit:
     - source venv/bin/activate
     - venv/bin/coverage run --source='./testr' manage.py test
     - venv/bin/coverage report
-  artifacts:
-    paths:
-      - ./
 
 ui:
   stage: test
@@ -76,15 +73,14 @@ ui:
   script:
     - source venv/bin/activate
     - python manage.py behave
-  artifacts:
-    paths:
-      - ./
 
 staging:
   stage: deploy
   type: deploy
   only:
     - master
+  dependencies:
+    - elm
   script:
     - apt-get update -qy
     - apt-get install -y ruby ruby-dev
@@ -96,6 +92,8 @@ production:
   type: deploy
   only:
     - tags
+  dependencies:
+    - elm
   script:
     - apt-get update -qy
     - apt-get install -y ruby-dev
