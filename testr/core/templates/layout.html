@@ -3,6 +3,9 @@
 {% block layout %}
 <section class="header">
     {% include "core/partials/header.html" %}
+    <div class="Nav--SubHdg">
+        {% block subnav %}{% endblock %}
+    </div>
 </section>
 <section class="container-fluid content">
     {% block content %}{% endblock content %}

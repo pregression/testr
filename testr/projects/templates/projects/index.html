@@ -1,13 +1,19 @@
 {% extends "layout.html" %}
+{% load compress %}
 
+{% block title %}
+Projects {{ title_delimiter}} {{ block.super }}
+{% endblock %}
+
+{% block subnav %}
+<h1>Projects</h1>
+{% endblock %}
 
 {% block content %}
-{% load compress %}
 {% compress css file %}
 <link rel="stylesheet" href="/static/projects/css/projects.css">
 {% endcompress %}
 
-<h1>Projects</h1>
 {{ projects }}
 
 {% endblock %}
