@@ -16,19 +16,6 @@ stages:
   - test
   - deploy
 
-elm:
-  stage: build
-  image: node:9.4
-  cache:
-    untracked: true
-  script:
-    - npm install elm
-    - node_modules/elm/binwrappers/elm-package install -y
-    - node_modules/elm/binwrappers/elm-make frontend/src/Main.elm --output testr/core/static/js/main.js
-  artifacts:
-    paths:
-      - testr/core/static/js/main.js
-
 unit:
   stage: test
   services:

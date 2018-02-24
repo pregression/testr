@@ -6,18 +6,6 @@ set -eo pipefail
 
 echo "-----> I'm post-compile hook"
 
-if [ -f bin/install_nodejs ]; then
-    echo "-----> Running install_nodejs"
-    chmod +x bin/install_nodejs
-    bin/install_nodejs
-fi
-
-if [ -f bin/elm_build ]; then
-    echo "-----> Running elm_build"
-    chmod +x bin/elm_build
-    bin/elm_build
-fi
-
 if [ -f bin/run_collectstatic ]; then
     echo "-----> Running run_collectstatic"
     chmod +x bin/run_collectstatic
