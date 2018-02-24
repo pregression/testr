@@ -15,16 +15,20 @@
         <link rel="stylesheet" href="/static/css/input.css">
         <link rel="stylesheet" href="/static/vendor/css/bootstrap.min.css">
         {% endcompress %}
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+            crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+        {% compress js file %}
+            <script src="/static/js/app.js"></script>
+        {% endcompress %}
     </head>
     <body>
-        <div id="elm"></div>
     {% block layout %}
     {% endblock layout %}
     {% block chromeless %}
     {% endblock chromeless %}
     </body>
-    {% compress js file %}
-    <script src="/static/js/main.js"></script>
-    <script type="text/javascript">Elm.Testr.embed(document.getElementById("elm"))</script>
-    {% endcompress %}
 </html>

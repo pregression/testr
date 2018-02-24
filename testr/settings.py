@@ -229,7 +229,7 @@ COMPRESS_CSS_FILTERS = [
 ]
 
 COMPRESS_JS_FILTERS = [
-    'compressor.filters.jsmin.JSMinFilter',
+    'compressor.filters.jsmin.SlimItFilter',
 ]
 
 COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'

@@ -1,5 +1,4 @@
 header {
-    position: fixed;
     width: 100%;
     background-color: #fff;
     z-index: 1000;
@@ -25,7 +24,7 @@ header {
 }
 
 .NavSection--right {
-
+    margin-left: auto;
 }
 
 .NavSection--left {
@@ -35,8 +34,8 @@ header {
 .ProfileIcon {
     background-color: #333;
     color: #fff;
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
     margin: 6px;
     text-align: center;
@@ -49,18 +48,37 @@ header {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    padding-right: 1px;
 }
 
 .Dropdown {
     position: absolute;
-    top: 3.8rem;
-    right: 1.3rem;
-    width: 5%;
-    background-color: #eee;
+    top: 3.5rem;
+    right: 0.5rem;
+    width: 15rem;
+    color: #333;
+    display: none;
+    background-color: #fff;
     padding: 1rem;
-    opacity: 1;
-    visibility: visible;
-    transition: visibility 0s, opacity 50ms linear;
+    box-shadow: 0 3px 20px rgba(89, 105, 129, .3), 0 1px 2px rgba(0, 0, 0, .05), 0 0 0 1px rgba(89, 105, 129, .1);
+    border-radius: 3px;
+    transition: transform ease 0.1s, opacity ease 0.1s;
+}
+
+.Dropdown--list {
+    padding: 0;
+    margin: auto;
+    list-style: none;
+}
+
+.Dropdown--listItem {
+    padding: 0.5rem 0;
+}
+
+.Dropdown--listItem:hover,
+.Dropdown--listItem:active,
+.Dropdown--listItem:focus {
+    background-color: #ededed;
 }
 
 .Nav--SubHdg {
