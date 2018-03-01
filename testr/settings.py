@@ -35,7 +35,7 @@ ALLOWED_HOSTS = [
 ]
 
 # Application definition
-APP_NAME = 'Testr'
+APP_NAME = 'Pregression'
 APP_TITLE_DELIMITER = '|'
 ESTABLISHED_YEAR = 2018
 SITE_ID = 2
