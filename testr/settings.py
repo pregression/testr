@@ -30,7 +30,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
     'localhost',
-    'testr-staging.herokuapp.com',
+    '.herokuapp.com',
+    '.pregression.com',
 ]
 
 # Application definition
