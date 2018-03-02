@@ -12,14 +12,40 @@
 
 /* Make sure links styled like buttons act like buttons */
 a.btn {
-    color: #0094FF;
     text-decoration: none;
+}
+
+a.btn:hover,
+a.btn:active,
+a.btn:focus {
+    text-decoration: none !important;
 }
 
 .btn-primary,
 a.btn-primary {
     background-color: #0094ff;
     color: #fff;
+}
+
+a.btn-primary:hover,
+a.btn-primary:active,
+a.btn-primary:focus,
+a.btn-success:hover,
+a.btn-success:active,
+a.btn-success:focus,
+a.btn-danger:hover,
+a.btn-danger:active,
+a.btn-danger:focus,
+a.btn-info:hover,
+a.btn-info:active,
+a.btn-info:focus {
+    color: #fff;
+}
+
+a.btn-warning:hover,
+a.btn-warning:active,
+a.btn-warning:focus {
+    color: #333;
 }
 
 .btn-primary:active {
@@ -33,6 +59,12 @@ a.btn-primary {
 
 .btn-secondary:active {
     background-color: #aaa;
+}
+
+a.btn-secondary:hover,
+a.btn-secondary:active,
+a.btn-secondary:focus {
+    color: #0094FF;
 }
 
 .btn-success {

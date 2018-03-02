@@ -2,11 +2,13 @@ from django.db import models
 from django.utils.timezone import now
 
 from testr.custom_auth.models import User
+from testr.core.models import TimeStampedModel, Owner
 
 
-class Project(models.Model):
+class Project(TimeStampedModel):
     name = models.CharField(max_length=255, db_index=True)
     users = models.ManyToManyField(User)
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
     deactivated_at = models.DateTimeField(null=True)
     activated_at = models.DateTimeField(null=True)
