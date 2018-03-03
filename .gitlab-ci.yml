@@ -29,7 +29,7 @@ unit:
   script:
     - python -V # Print out python version for debugging
     - pip install -r requirements.txt
-    - coverage run --source='./testr' manage.py test
+    - coverage run manage.py test
     - coverage report
 
 ui:
