@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% load compress %}
+
+{% block title %}
+Create New Project {{ title_delimiter}} {{ block.super }}
+{% endblock %}
+
+{% block subnav %}
+<h1>Create New Project</h1>
+{% endblock %}
+
+{% block content %}
+<form action="/projects/new/" method="POST" class="CreateProjectForm">
+    {% csrf_token %}
+    <div class="CreateProjectForm--inputGroup">
+        <label for="{{ form.name.id_for_label }}">
+            <span class="CreateProjectForm--inputGroupLabel">Project Name</span>
+            {{ form.name }}
+        </label>
+    </div>
+    <div class="CreateProjectForm--inputGroup">
+        <a href="{% url 'projects_index' %}" class="btn btn-secondary">Cancel</a>
+        <input type="submit" class="btn btn-primary" value="Create project">
+    </div>
+</form>
+{% endblock %}

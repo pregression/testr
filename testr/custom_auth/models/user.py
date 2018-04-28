@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractUser
 
 from . import UserManager
 
-
 class User(AbstractUser):
     username = models.CharField(
         max_length=100,

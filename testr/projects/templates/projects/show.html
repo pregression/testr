@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{ project.name }} {{ title_delimiter}}  {{ block.super }}
+{% endblock %}
+
+{% block subnav %}
+<h1>{{ project.name }}</h1>
+{% endblock %}
+
+{% block content %}
+{{ project }}
+{% endblock %}

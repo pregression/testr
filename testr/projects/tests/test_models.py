@@ -1,12 +1,15 @@
 from django.test import TestCase
 
 from testr.projects.models import Project
+from testr.core.models import Owner, User
 
 
 class ProjectModelTests(TestCase):
     def setUp(self):
-        active_project = Project(name="foo")
-        inactive_project = Project(name="bar", is_active=False)
+        user = User.objects.create(email="foo@bar.com")
+        owner = Owner.objects.create(user_id=user.id)
+        active_project = Project(name="foo", owner_id=owner.id)
+        inactive_project = Project(name="bar", is_active=False, owner_id=owner.id)
         active_project.save()
         inactive_project.save()
         self.active_project = active_project

@@ -1,0 +1,25 @@
+.Projects--createNewWrapper {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 2.5rem;
+    position: relative;
+    padding: 1.75rem;
+}
+
+.Projects--headline {
+    text-align: center;
+    color: #666;
+}
+
+.Projects--hdg {
+    font-size: 18px;
+    margin: auto;
+}
+
+.Projects--gettingStarted {
+    font-size: 14px;
+}
+
+.Projects--createNewCTA {
+    text-align: center;
+}
