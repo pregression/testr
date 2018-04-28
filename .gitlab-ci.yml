@@ -54,10 +54,8 @@ staging:
   only:
     - master
   script:
-    - curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_STAGING_APP --api-key=$HEROKU_STAGING_API_KEY
-    - heroku run python manage.py migrate --exit-code --app $HEROKU_STAGING_APP
 
 production:
   image: ruby:latest
