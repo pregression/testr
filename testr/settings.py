@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'testr.marketing.apps.MarketingConfig',
     'testr.projects.apps.ProjectsConfig',
 
+    'anymail',
     'tellme',
     'modelcluster',
     'taggit',
@@ -264,3 +265,10 @@ COMPRESS_JS_FILTERS = [
 ]
 
 COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
+
+DEFAULT_FROM_EMAIL = "support@pregression.com"
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+ANYMAIL = {
+    'MAILGUN_API_KEY': os.getenv('MAILGUN_API_KEY'),
+    'MAILGUN_SENDER_DOMAIN': os.getenv('MAILGUN_DOMAIN'),
+}
