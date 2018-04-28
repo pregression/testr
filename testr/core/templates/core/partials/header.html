@@ -9,15 +9,17 @@
             <span class="Logo dripicons-basketball"></span>
         </div>
         <div class="NavSection--right">
-            <div id="profileIcon" class="ProfileIcon">
-                {% user_display user as user_display %}
-                <span class="ProfileIcon--letter">{{ user_display|capfirst|first }}</span>
-                <div id="menu" class="Dropdown">
-                    <ul class="Dropdown--list">
-                        <li class="Dropdown--listItem"><a href="{% url 'account_logout' %}">Sign out</a></li>
-                    </ul>
+            {% user_display user as user_display %}
+            {% if user_display != "AnonymousUser" %}
+                <div id="profileIcon" class="ProfileIcon">
+                    <span class="ProfileIcon--letter">{{ user_display|capfirst|first }}</span>
+                    <div id="menu" class="Dropdown">
+                        <ul class="Dropdown--list">
+                            <li class="Dropdown--listItem"><a href="{% url 'account_logout' %}">Sign out</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
     <div class="Nav--underline"></div>
