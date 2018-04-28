@@ -30,7 +30,7 @@ unit:
     - python -V # Print out python version for debugging
     - pip install -r requirements.txt
     - coverage run manage.py test
-    - coverage report
+    - coverage report --fail-under 87
 
 ui:
   stage: test
