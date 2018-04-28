@@ -1,0 +1,9 @@
+{% extends "chromeless.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block layout %}
+    {{ page.body|richtext }}
+{% endblock %}

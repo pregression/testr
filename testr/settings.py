@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
 
+    'testr.blog.apps.BlogConfig',
     'testr.core.apps.CoreConfig',
     'testr.custom_auth.apps.CustomAuthConfig',
     'testr.marketing.apps.MarketingConfig',
@@ -233,6 +234,8 @@ LOGIN_REDIRECT_URL = '/projects'
 # Whitelist routes that don't require login
 WHITELIST_ROUTES = [
     settings.LOGIN_URL,
+    STATIC_URL,
+    MEDIA_URL,
     '/admin/',
     '/admin/login/',
     '/accounts/password_reset/',
@@ -241,6 +244,8 @@ WHITELIST_ROUTES = [
     '/terms/',
     '/privacy/',
     '/license/',
+    r'/blog/*',
+    r'/tags/*',
 ]
 
 # Compressor setup
