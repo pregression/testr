@@ -15,23 +15,28 @@
         <link rel="stylesheet" href="/static/css/input.css">
         <link rel="stylesheet" href="/static/font/dripicons/webfont.css">
         <link rel="stylesheet" href="/static/vendor/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'tellme/feedback.min.css' %}">
         {% endcompress %}
-        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
         <script
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
             crossorigin="anonymous">
         </script>
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
         {% compress js file %}
             <script src="/static/js/app.js"></script>
         {% endcompress %}
     </head>
     <body class="{% block body_class %}{% endblock %}">
+        <button type="button" id="feedback-btn" class="btn btn-success vertical-right-aligned">
+            Feedback <span class="dripicons-broadcast" aria-hidden="true"></span>
+        </button>
     {% block layout %}
     {% endblock layout %}
     {% block chromeless %}
     {% endblock chromeless %}
+    {%  include 'tellme/js_inc.html' %}
     </body>
 </html>

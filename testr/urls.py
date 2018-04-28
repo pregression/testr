@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'accounts/', include('allauth.urls')),
     path('projects/', include('testr.projects.urls')),
+    re_path(r'^tellme/', include('tellme.urls')),
     re_path(r'', include('testr.core.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

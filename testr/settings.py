@@ -41,6 +41,7 @@ APP_TITLE_DELIMITER = '|'
 ESTABLISHED_YEAR = 2018
 SITE_ID = 2
 SOCIALACCOUNT_QUERY_EMAIL = True
+TELLME_FEEDBACK_EMAIL = 'incoming+pregression/testr@incoming.gitlab.com'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -77,6 +78,7 @@ INSTALLED_APPS = [
     'testr.marketing.apps.MarketingConfig',
     'testr.projects.apps.ProjectsConfig',
 
+    'tellme',
     'modelcluster',
     'taggit',
     'compressor',
