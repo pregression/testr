@@ -82,6 +82,7 @@ INSTALLED_APPS = [
     'tellme',
     'modelcluster',
     'taggit',
+    'robots',
     'compressor',
     'behave_django',
 ]
