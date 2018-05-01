@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:9.5
+    volumes:
+    - data:/var/lib/postgresql/9.5/main
+    environment:
+      POSTGRES_USER: testr
+      POSTGRES_PASSWORD: testr
+      POSTGRES_DB: testr
+      PGDATA: /var/lib/postgresql/9.5/main
+    ports:
+    - '5432'
+  web:
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+    - .:/app
+    ports:
+    - '8000:8000'
+    depends_on:
+    - db
+    environment:
+      DATABASE_URL: postgres://testr:testr@db/testr
+
+volumes:
+  data:
+    driver:
+      local
