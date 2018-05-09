@@ -16,7 +16,7 @@ django-appconf==1.0.2
 django-compressor==2.2
 django-dotenv==1.4.2
 django-modelcluster==4.1
-django-robots==3.0
+-e git+https://github.com/jazzband/django-robots@f484c2a6abcae6244f860ad077af28d4be62037e#egg=django_robots
 django-taggit==0.22.2
 django-tellme==0.6.5
 django-treebeard==4.2.1
