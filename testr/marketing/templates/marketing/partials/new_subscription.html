@@ -1,0 +1,17 @@
+<div class="col-xs-12 col-md-6">
+    <div class="NewsletterSubscription--icon">
+        <i class="dripicons-basketball"></i>
+    </div>
+    <div class="NewsletterSubscription--copy">
+        <h3>Get updates right in your inbox!</h3>
+        <p>Receive a monthly email on the latest {{ app_name }} updates and news.</p>
+    </div>
+</div>
+<div class="col-xs-12 col-md-6">
+    <form action="{% url 'new_subscription' %}" method="POST">
+        {% csrf_token %}
+        {{newsletter_form.email}}
+        <input type="submit" value="Subscribe" class="btn btn-primary NewsletterSubscription--submit">
+    </form>
+</div>
+    

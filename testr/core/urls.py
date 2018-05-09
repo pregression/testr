@@ -11,5 +11,5 @@ urlpatterns = [
     path('privacy/', views.privacy, name='privacy'),
     re_path(r'^cms/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
-    re_path(r'', include(wagtail_urls)),
+    re_path(r'^blog/', include(wagtail_urls)),
 ]

@@ -108,4 +108,4 @@ venv.bak/
 
 node_modules
 /media
-
+/src

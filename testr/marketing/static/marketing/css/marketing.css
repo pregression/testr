@@ -1,0 +1,58 @@
+.marketing-heading {
+    z-index: 1000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.app-name {
+    display: inline;
+    font-size: 30px;
+}
+
+.tile {
+    height: 100vh;
+    background-color: #FFFFFF;
+}
+
+.tile:nth-child(even) {
+    background-color: #F7F8FC;
+}
+
+.tile.updates {
+    height: 250px;
+}
+
+.tile.details {
+    height: 600px;
+}
+
+.tile.marketing-links {
+    height: 400px;
+}
+
+.NewsletterSubscription--input {
+    margin-right: -6px;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: transparent;
+}
+
+.NewsletterSubscription--submit {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.NewsletterSubscription--copy {
+    display: inline-block;
+}
+
+.NewsletterSubscription--icon {
+    display: inline-block;
+    font-size: 55px;
+    padding-right: 0.5em;
+}
+

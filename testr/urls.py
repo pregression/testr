@@ -29,5 +29,6 @@ urlpatterns = [
     re_path(r'^tellme/', include('tellme.urls')),
     re_path(r'^robots.txt', include('robots.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('', include('testr.marketing.urls')),
     re_path(r'', include('testr.core.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

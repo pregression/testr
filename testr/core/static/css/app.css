@@ -58,3 +58,19 @@ a:active {
   top: 50%;
   z-index: 100;
 }
+
+.row.vdivide [class*='col-']:not(:last-child):after {
+    background: #ccc;
+    width: 1px;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 33%;
+    bottom: 33%;
+    right: 0;
+    min-height: 70px;
+}
+
+.full-height {
+    height: 100%;
+}
