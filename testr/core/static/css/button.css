@@ -16,7 +16,11 @@
 a.btn,
 a.btn:hover,
 a.btn:active,
-a.btn:focus {
+a.btn:focus,
+.btn-link,
+.btn-link:hover,
+.btn-link:active,
+.btn-link:focus {
     text-decoration: none !important;
 }
 
@@ -102,9 +106,13 @@ a.btn-secondary:focus {
     background-color: #000066;
 }
 
+.btn-link,
 .btn-flat {
     background-color: transparent;
     box-shadow: none;
+}
+
+.btn-flat {
     color: #333;
 }
 

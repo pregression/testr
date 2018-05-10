@@ -1,0 +1,12 @@
+.blog-post {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.blog-post:last-child {
+    border-bottom: none;
+}
+
+.blog-post > .title {
+    font-size: 40px;
+}

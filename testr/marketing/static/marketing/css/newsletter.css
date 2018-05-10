@@ -1,0 +1,23 @@
+.NewsletterSubscription--input {
+    margin-right: -6px;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: transparent;
+}
+
+.NewsletterSubscription--submit {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.NewsletterSubscription--copy {
+    display: inline-block;
+}
+
+.NewsletterSubscription--icon {
+    display: inline-block;
+    font-size: 55px;
+    padding-right: 0.5em;
+}

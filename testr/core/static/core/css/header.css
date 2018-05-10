@@ -85,7 +85,7 @@ header {
 .Nav--SubHdg {
     height: 5rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     border-bottom-width: 1px;
     border-bottom-style: solid;

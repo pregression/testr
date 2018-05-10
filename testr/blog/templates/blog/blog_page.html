@@ -2,51 +2,58 @@
 
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load compress %}
 
 {% block body_class %}template-blogpage{% endblock %}
 
 {% block subnav %}
-    <h1>{{ page.title }}</h1>
+    <h1>Blog</h1>
+    {% include "marketing/partials/new_subscription_form.html" %}
 {% endblock %}
 
 
 {% block content %}
-    <p class="meta">{{ page.date }}</p>
+    {% compress css file %}
+        <link rel="stylesheet" href="/static/blog/css/blog_index.css">
+    {% endcompress %}
+    <div class="blog-post col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <h1 class="title">{{ page.title }}</h1>
+        <h2>{{ page.date }}</h2>
 
-    {% with categories=page.categories.all %}
-        {% if categories %}
-            <h3>Posted in:</h3>
-            <ul>
-                {% for category in categories %}
-                    <li style="display: inline">
-                        {% image category.icon fill-32x32 style="vertical-align: middle" %}
-                        {{ category.name }}
-                    </li>
+        <div class="intro">{{ page.intro }}</div>
+
+        {{ page.body|richtext }}
+
+        {% for item in page.gallery_images.all %}
+            <div style="float: left; margin: 10px">
+                {% image item.image fill-320x240 %}
+                <p>{{ item.caption }}</p>
+            </div>
+        {% endfor %}
+
+        {% if page.tags.all.count %}
+            <div class="tags">
+                <h3>Tags</h3>
+                {% for tag in page.tags.all %}
+                    <a class="btn btn-info" href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a>
                 {% endfor %}
-            </ul>
+            </div>
         {% endif %}
-    {% endwith %}
 
-    <div class="intro">{{ page.intro }}</div>
+        {% with categories=page.categories.all %}
+            {% if categories %}
+                <h3>Posted in:</h3>
+                <ul>
+                    {% for category in categories %}
+                        <li style="display: inline">
+                            {% image category.icon fill-32x32 style="vertical-align: middle" %}
+                            {{ category.name }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
 
-    {{ page.body|richtext }}
-
-    {% for item in page.gallery_images.all %}
-        <div style="float: left; margin: 10px">
-            {% image item.image fill-320x240 %}
-            <p>{{ item.caption }}</p>
-        </div>
-    {% endfor %}
-
-    {% if page.tags.all.count %}
-        <div class="tags">
-            <h3>Tags</h3>
-            {% for tag in page.tags.all %}
-                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
-
+        <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+    </div>
 {% endblock %}

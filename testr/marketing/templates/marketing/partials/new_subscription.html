@@ -8,10 +8,6 @@
     </div>
 </div>
 <div class="col-xs-12 col-md-6">
-    <form action="{% url 'new_subscription' %}" method="POST">
-        {% csrf_token %}
-        {{newsletter_form.email}}
-        <input type="submit" value="Subscribe" class="btn btn-primary NewsletterSubscription--submit">
-    </form>
+    {% include "marketing/partials/new_subscription_form.html" %}
 </div>
     

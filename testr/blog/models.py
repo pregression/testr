@@ -12,6 +12,8 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
+from testr.marketing.forms import NewNewsletterSubscription
+
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
@@ -25,6 +27,7 @@ class BlogIndexPage(Page):
         context = super().get_context(request)
         blogpages = self.get_children().live().order_by('-first_published_at')
         context['blogpages'] = blogpages
+        context['newsletter_form'] = NewNewsletterSubscription()
         return context
 
 
@@ -61,6 +64,11 @@ class BlogPage(Page):
             return gallery_item.image
         else:
             return None
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['newsletter_form'] = NewNewsletterSubscription()
+        return context
 
     search_fields = Page.search_fields + [
         index.SearchField('intro'),

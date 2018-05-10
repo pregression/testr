@@ -1,0 +1,10 @@
+{% load compress %}
+{% compress css file %}
+<link rel="stylesheet" href="/static/marketing/css/newsletter.css">
+{% endcompress %}
+
+<form action="{% url 'new_subscription' %}" method="POST">
+    {% csrf_token %}
+    {{newsletter_form.email}}
+    <input type="submit" value="Subscribe" class="btn btn-primary NewsletterSubscription--submit">
+</form>

@@ -2,28 +2,42 @@
 
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load compress %}
+
+{% block title %}{{ page.seo_title}}{% endblock %}
 
 {% block body_class %}template-blogindexpage{% endblock %}
 
 {% block subnav %}
     <h1>{{ page.title }}</h1>
+    {% include "marketing/partials/new_subscription_form.html" %}
 {% endblock %}
 
 {% block content %}
+    {% compress css file %}
+        <link rel="stylesheet" href="/static/blog/css/blog_index.css">
+    {% endcompress %}
+    {% compress js file %}
+        <script src="/static/blog/js/blog_index.js"></script>
+    {% endcompress %}
 
     <div class="intro">{{ page.intro|richtext }}</div>
+    <div class="blog-posts col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        {% for post in blogpages %}
+            <div class="blog-post">
+                {% with post=post.specific %}
+                    <h2 class="title"><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+                    <h3>{{ post.date }}</h3>
 
-    {% for post in blogpages %}
-        {% with post=post.specific %}
-            <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+                    {% with post.main_image as main_image %}
+                        {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
+                    {% endwith %}
 
-            {% with post.main_image as main_image %}
-                {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
-            {% endwith %}
-
-            <p>{{ post.intro }}</p>
-            {{ post.body|richtext }}
-        {% endwith %}
-    {% endfor %}
-
+                    <p>{{ post.intro }}</p>
+                    {{ post.body|truncatewords:100|richtext }}
+                    <a href="{% pageurl post %}">Read More</a>
+                {% endwith %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

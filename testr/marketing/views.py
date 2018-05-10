@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 from .forms import NewNewsletterSubscription
 
@@ -16,4 +17,12 @@ def subscribe(request):
             subscription = form.save()
             if subscription.id is not None:
                 messages.add_message(request, messages.SUCCESS, "Thank you for your support!")
+            else:
+                messages.add_message(request, messages.ERROR, subscription.message)
+        else:
+            messages.add_message(request, messages.ERROR, form.errors['email'])
+
+    referer = request.META.get('HTTP_REFERER')
+    if referer is not None:
+        return HttpResponseRedirect(referer)
     return redirect('marketing_home')
