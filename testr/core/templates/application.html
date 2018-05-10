@@ -33,10 +33,11 @@
         <button type="button" id="feedback-btn" class="btn btn-secondary vertical-right-aligned">
             Feedback <span class="dripicons-broadcast" aria-hidden="true"></span>
         </button>
-    {% block layout %}
-    {% endblock layout %}
-    {% block chromeless %}
-    {% endblock chromeless %}
-    {%  include 'tellme/js_inc.html' %}
+        {% include "core/partials/messages.html" %}
+        {% block layout %}
+        {% endblock layout %}
+        {% block chromeless %}
+        {% endblock chromeless %}
+        {% include 'tellme/js_inc.html' %}
     </body>
 </html>

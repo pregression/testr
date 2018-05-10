@@ -1,0 +1,31 @@
+.flash-messages {
+    position: fixed;
+    right: 2%;
+    top: 5%;
+    z-index: 1000;
+}
+
+.flash-message {
+    background-color: #fff;
+    width: 250px;
+    min-height: 75px;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0, .25);
+    display: inline-block;
+    padding: 15px;
+    border-radius: 2px;
+}
+
+.flash-message-indicator {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.flash-message-indicator.error {
+    background-color: #E90303;
+}
+
+.flash-message-indicator.success {
+    background-color: #07C606;
+}

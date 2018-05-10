@@ -1,0 +1,25 @@
+{% load compress %}
+
+{% compress css file %}
+<link rel="stylesheet" href="/static/core/css/messages.css">
+{% endcompress %}
+
+{% compress js file %}
+<script src="/static/core/js/messages.js"></script>
+{% endcompress %}
+
+{% if messages %}
+<ul class="flash-messages">
+    {% for message in messages %}
+    <li id="message{{forloop.counter}}" {% if message.tags %} class="flash-message {{ message.tags }}"{% endif %}>
+        <div{% if message.tags %} class="flash-message-indicator {{ message.tags }}"{% endif %}></div>
+        <span>{{ message }}</span>
+        {% if message.level != DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <button type="button" class="btn btn-flat btn-close" onclick="removeElement(message{{forloop.counter}})">
+                <i class="dripicons-cross"></i>
+            </button>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}

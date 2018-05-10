@@ -6,6 +6,10 @@
             return $(el).css('display') !== 'none';
         }
 
+        window.removeElement = function removeElement(el) {
+            el.parentElement.removeChild(el);
+        }
+
         window.scrollToHash = function scrollToHash(id) {
             var el = document.getElementById(id);
             if (el)

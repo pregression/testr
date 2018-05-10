@@ -101,3 +101,15 @@ a.btn-secondary:focus {
 .btn-info:active {
     background-color: #000066;
 }
+
+.btn-flat {
+    background-color: transparent;
+    box-shadow: none;
+    color: #333;
+}
+
+.btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
