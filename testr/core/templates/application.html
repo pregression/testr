@@ -7,6 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin">
         <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
         {% compress css file %}
         <link rel="stylesheet" href="/static/css/app.css">
@@ -17,14 +18,10 @@
         <link rel="stylesheet" href="/static/vendor/css/bootstrap.min.css">
         <link rel="stylesheet" href="{% static 'tellme/feedback.min.css' %}">
         {% endcompress %}
-        <script
-            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-            crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js" integrity="sha384-TU+2E2omvu82iO/QZZM+yUCKqjYiahza2KDH8CKKcFHUA9+Al0dxAY8DejxPwohG" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js" integrity="sha384-2aj/bCHsl/sW9Br7V4KFv8G2BBHuiQ7ZOzY+OxTo7whNRvJY4FauRJbna1IVAvos" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js" integrity="sha384-tQnfZyyk7ZX5leaWDkq9qAvwSkSvH0ouVfrxLn12X9Y2DS8nDa8pHXFH9LLKJdo/" crossorigin="anonymous"></script>
         {% compress js file %}
             <script src="/static/js/app.js"></script>
         {% endcompress %}
@@ -38,6 +35,6 @@
         {% endblock layout %}
         {% block chromeless %}
         {% endblock chromeless %}
-        {% include 'tellme/js_inc.html' %}
+        {% include "tellme/js_inc.html" %}
     </body>
 </html>

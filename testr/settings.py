@@ -80,12 +80,13 @@ INSTALLED_APPS = [
     'testr.projects.apps.ProjectsConfig',
 
     'anymail',
-    'tellme',
-    'modelcluster',
-    'taggit',
-    'robots',
-    'compressor',
     'behave_django',
+    'compressor',
+    'modelcluster',
+    'robots',
+    'security',
+    'taggit',
+    'tellme',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,11 @@ MIDDLEWARE = [
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     'testr.core.middleware.AuthRequiredMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'security.middleware.DoNotTrackMiddleware',
+    'security.middleware.ContentNoSniff',
+    'security.middleware.ContentSecurityPolicyMiddleware',
+    'security.middleware.XssProtectMiddleware',
+    'security.middleware.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'testr.urls'
@@ -128,6 +134,22 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'testr.wsgi.application'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}
 
 
 # Database
@@ -273,4 +295,22 @@ EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 ANYMAIL = {
     'MAILGUN_API_KEY': os.getenv('MAILGUN_API_KEY'),
     'MAILGUN_SENDER_DOMAIN': os.getenv('MAILGUN_DOMAIN'),
+}
+
+# Security
+CSP_MODE = 'report-only'
+CSP_DICT = {
+    "default-src": ["none"],
+    "script-src": ["self", "https://code.jquery.com", "https://cdn.jsdelivr.net"],
+    "style-src": ["self", "https://fonts.googleapis.com"],
+    "img-src": ["self", "https://unsplash.com"],
+    "connect-src": ["self"],
+    "font-src": ["self", "https://fonts.gstatic.com"],
+    "object-src": ["none"],
+    "media-src": ["self"],
+    "frame-src": ["self"],
+    # array of allowed MIME types
+    "plugin-types" : [ "application/pdf" ],
+    "reflected-xss" : 'filter',
+    "report-uri" : "/csp-report/",
 }
