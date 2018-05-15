@@ -1,5 +1,4 @@
 from django.test import TestCase, override_settings
-from unittest import skip
 
 
 class AuthRequiredMiddlewareTestCase(TestCase):

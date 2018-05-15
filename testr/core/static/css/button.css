@@ -21,7 +21,7 @@ a.btn:focus,
 .btn-link:hover,
 .btn-link:active,
 .btn-link:focus {
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
 .btn-primary,

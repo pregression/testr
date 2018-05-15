@@ -1,6 +1,10 @@
 from django.test import TestCase
 from django.db import IntegrityError
+from faker import Faker
+
 from testr.custom_auth.models import User, UserManager
+
+fake = Faker()
 
 
 class UserTestCase(TestCase):
@@ -41,7 +45,7 @@ class UserManagerTestCase(TestCase):
 
     def test_create_user_with_no_email(self):
         email = None
-        password = "foo"
+        password = fake.pystr()
         try:
             self.manager.create_user(email, password)
             self.assertFalse(True)
@@ -50,7 +54,7 @@ class UserManagerTestCase(TestCase):
 
     def test_create_user_with_email(self):
         email = "foo@bar.com"
-        password = "foo"
+        password = fake.pystr()
         try:
             user = self.manager.create_user(email, password)
             self.assertIsInstance(user, User)
@@ -59,7 +63,7 @@ class UserManagerTestCase(TestCase):
 
     def test_create_super_user_with_no_email(self):
         email = None
-        password = "foo"
+        password = fake.pystr()
         try:
             self.manager.create_superuser(email, password)
             self.assertFalse(True)
@@ -68,7 +72,7 @@ class UserManagerTestCase(TestCase):
 
     def test_create_super_user_with_email(self):
         email = "foo@bar.com"
-        password = "foo"
+        password = fake.pystr()
         try:
             user = self.manager.create_superuser(email, password)
             self.assertIsInstance(user, User)

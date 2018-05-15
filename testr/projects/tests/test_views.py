@@ -1,6 +1,6 @@
 from testr.core.test_helpers import AuthenticatedTestCase
 
-from testr.core.models import User, Owner
+from testr.core.models import Owner
 from testr.projects.models import Project
 
 class IndexTestCase(AuthenticatedTestCase):

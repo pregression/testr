@@ -1,4 +1,5 @@
 from behave import given, when, then
+from sure import this
 
 
 @given(u'this step exists')
@@ -18,4 +19,4 @@ def is_running(context):
 
 @then(u'django_ready should be called')
 def django_context(context):
-    assert context.django
+    return this(context.django).should.be.ok

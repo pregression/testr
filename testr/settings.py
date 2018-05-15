@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -59,7 +58,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.gitlab',
     'allauth.socialaccount.providers.google',
-
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.contrib.search_promotions',
@@ -72,13 +70,11 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
-
     'testr.blog.apps.BlogConfig',
     'testr.core.apps.CoreConfig',
     'testr.custom_auth.apps.CustomAuthConfig',
     'testr.marketing.apps.MarketingConfig',
     'testr.projects.apps.ProjectsConfig',
-
     'anymail',
     'behave_django',
     'compressor',
