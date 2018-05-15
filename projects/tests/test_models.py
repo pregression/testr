@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from testr.projects.models import Project
-from testr.core.models import Owner, User
+from projects.models import Project
+from core.models import Owner, User
 
 
 class ProjectModelTests(TestCase):

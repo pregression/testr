@@ -1,8 +1,8 @@
 from django.db import models
 from django.utils.timezone import now
 
-from testr.custom_auth.models import User
-from testr.core.models import TimeStampedModel, Owner
+from custom_auth.models import User
+from core.models import TimeStampedModel, Owner
 
 
 class Project(TimeStampedModel):

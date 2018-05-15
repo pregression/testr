@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from testr.core.models import User
+from core.models import User
 
 
 class AuthenticatedTestCase(TestCase):

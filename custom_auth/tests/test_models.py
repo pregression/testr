@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.db import IntegrityError
 from faker import Faker
 
-from testr.custom_auth.models import User, UserManager
+from custom_auth.models import User, UserManager
 
 fake = Faker()
 
