@@ -3,7 +3,7 @@ from django.conf import settings
 from django.test import TestCase, RequestFactory
 from django.utils.timezone import now
 
-from testr.core.context_processors import \
+from core.context_processors import \
     current_year,\
     established_year, \
     formatted_copyright_year, \
@@ -31,14 +31,14 @@ class EstablishedYearTests(AbstractContextProcessorTest):
 
 
 class FormattedCopyRightYearTests(AbstractContextProcessorTest):
-    @mock.patch('testr.core.context_processors.__get_current_year')
+    @mock.patch('core.context_processors.__get_current_year')
     def test_displays_established_year_if_current_year_equals_established_year(self, mocked_getter):
         mocked_getter.return_value = now().year
         request = self.factory.get('/')
         data = formatted_copyright_year(request)
         self.assertEqual(data['formatted_copyright_year'], '2018')
 
-    @mock.patch('testr.core.context_processors.__get_current_year')
+    @mock.patch('core.context_processors.__get_current_year')
     def test_displays_dash_delimited_string_when_current_year_is_gt_established_year(self, mocked_getter):
         yr = now().year + 10
         mocked_getter.return_value = yr

@@ -25,10 +25,10 @@ sitemaps = {}
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'accounts/', include('allauth.urls')),
-    path('projects/', include('testr.projects.urls')),
+    path('projects/', include('projects.urls')),
     re_path(r'^tellme/', include('tellme.urls')),
     re_path(r'^robots.txt', include('robots.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    path('', include('testr.marketing.urls')),
-    re_path(r'', include('testr.core.urls')),
+    path('', include('marketing.urls')),
+    re_path(r'', include('core.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

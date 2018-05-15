@@ -12,7 +12,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 
-from testr.marketing.forms import NewNewsletterSubscription
+from marketing.forms import NewNewsletterSubscription
 
 
 class BlogIndexPage(Page):

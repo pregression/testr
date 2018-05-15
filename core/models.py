@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
 
-from testr.custom_auth.models import User
+from custom_auth.models import User
 
 class TimeStampedModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)

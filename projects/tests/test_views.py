@@ -1,7 +1,7 @@
-from testr.core.test_helpers import AuthenticatedTestCase
+from core.test_helpers import AuthenticatedTestCase
 
-from testr.core.models import Owner
-from testr.projects.models import Project
+from core.models import Owner
+from projects.models import Project
 
 class IndexTestCase(AuthenticatedTestCase):
     def test_render_projects_index(self):

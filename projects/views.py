@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
-from testr.core.models import Owner
+from core.models import Owner
 from .models import Project
 from .forms import NewProjectForm
 
