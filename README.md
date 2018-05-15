@@ -1,6 +1,6 @@
 # testr 
 
-[![pipeline status](https://gitlab.com/evan-duncan/testr/badges/develop/pipeline.svg)](https://gitlab.com/evan-duncan/testr/commits/develop) [![coverage report](https://gitlab.com/evan-duncan/testr/badges/develop/coverage.svg)](https://gitlab.com/evan-duncan/testr/commits/develop)
+[![pipeline status](https://gitlab.com/evan-duncan/testr/badges/develop/pipeline.svg)](https://gitlab.com/evan-duncan/testr/commits/develop) [![coverage report](https://gitlab.com/evan-duncan/testr/badges/develop/coverage.svg)](https://gitlab.com/evan-duncan/testr/commits/develop) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ef70155e57746aaa906a748971a1c2e)](https://www.codacy.com/app/evan.e.duncan/testr?utm_source=gitlab.com&amp;utm_medium=referral&amp;utm_content=pregression/testr&amp;utm_campaign=Badge_Grade)
 
 Working towards making testing an activity that is more effective and efficient in a world where things move quickly
 
