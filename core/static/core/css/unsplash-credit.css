@@ -10,3 +10,9 @@
     display: inline-block;
     border-radius: 3px;
 }
+
+.Unsplash--camera {
+    position: relative;
+    width: 12px;
+    vertical-align: middle;
+}

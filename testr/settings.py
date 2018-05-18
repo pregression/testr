@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '.herokuapp.com',
     '.pregression.com',
+    '.pregression.ssl',
 ]
 
 # Application definition
@@ -81,6 +82,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'robots',
     'security',
+    'sslserver',
     'taggit',
     'tellme',
 ]
@@ -99,9 +101,9 @@ MIDDLEWARE = [
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     'core.middleware.AuthRequiredMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'csp.middleware.CSPMiddleware',
     'security.middleware.DoNotTrackMiddleware',
     'security.middleware.ContentNoSniff',
-    'security.middleware.ContentSecurityPolicyMiddleware',
     'security.middleware.XssProtectMiddleware',
     'security.middleware.XFrameOptionsMiddleware',
 ]
@@ -270,20 +272,20 @@ WHITELIST_ROUTES = [
     '/license/',
     r'/blog/*',
     r'/tags/*',
+    r'/subscribe/*',
+    '/report-csp/',
+    r'/tellme/*',
 ]
 
 # Compressor setup
 COMPRESS_OFFLINE = config('COMPRESS_ASSETS', default=False, cast=bool)
-
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.rCSSMinFilter',
 ]
-
 COMPRESS_JS_FILTERS = [
     'compressor.filters.jsmin.SlimItFilter',
 ]
-
 COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
 
 DEFAULT_FROM_EMAIL = "support@pregression.com"
@@ -294,19 +296,19 @@ ANYMAIL = {
 }
 
 # Security
-CSP_MODE = 'report-only'
-CSP_DICT = {
-    "default-src": ["none"],
-    "script-src": ["self", "https://code.jquery.com", "https://cdn.jsdelivr.net"],
-    "style-src": ["self", "https://fonts.googleapis.com"],
-    "img-src": ["self", "https://unsplash.com"],
-    "connect-src": ["self"],
-    "font-src": ["self", "https://fonts.gstatic.com"],
-    "object-src": ["none"],
-    "media-src": ["self"],
-    "frame-src": ["self"],
-    # array of allowed MIME types
-    "plugin-types" : [ "application/pdf" ],
-    "reflected-xss" : 'filter',
-    "report-uri" : "/csp-report/",
-}
+APP_USING_TLS = config('APP_USING_TLS', default=False, cast=bool)
+SECURE_CONTENT_TYPE_NOSNIFF = APP_USING_TLS
+SECURE_SSL_REDIRECT = APP_USING_TLS
+SESSION_COOKIE_NAME = 'TESTRSESSIONID'
+SESSION_COOKIE_SECURE = APP_USING_TLS
+CSRF_USE_SESSIONS = True
+CSRF_COOKIE_NAME = '__Host-csrf'
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SECURE = APP_USING_TLS
+CSP_REPORT_ONLY = False
+CSP_DEFAULT_SRC = ("'self'" ,"https:",)
+CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "https://code.jquery.com", "https://cdn.jsdelivr.net",)
+CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "https://fonts.googleapis.com",)
+CSP_IMG_SRC = ("'self'", "data:", "https://unsplash.com",)
+CSP_FONT_SRC = ("'self'", "https://fonts.gstatic.com",)
+CSP_REPORT_URI = "/report-csp/"
