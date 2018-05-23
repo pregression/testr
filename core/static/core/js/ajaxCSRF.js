@@ -12,7 +12,7 @@
          */
         function getCookies() {
             if (cookiesEnabled()) {
-                return document.cookies.split(";");
+                return document.cookie.split(";");
             }
             return [];
         }
