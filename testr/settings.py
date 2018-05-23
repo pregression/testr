@@ -289,6 +289,6 @@ CSP_REPORT_ONLY = False
 CSP_DEFAULT_SRC = ("'self'" ,"https:",)
 CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "https://code.jquery.com", "https://cdn.jsdelivr.net",)
 CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "https://fonts.googleapis.com",)
-CSP_IMG_SRC = ("'self'", "data:", "https://unsplash.com",)
+CSP_IMG_SRC = ("'self'", "data:", "https://unsplash.com", "http://www.gravatar.com",)
 CSP_FONT_SRC = ("'self'", "https://fonts.gstatic.com",)
 CSP_REPORT_URI = "/report-csp/"
