@@ -22,7 +22,8 @@ from django.urls import path, include, re_path
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.core import urls as wagtail_urls
-from security import views as security_views
+
+from core.views import report_csp
 
 # TODO: https://docs.djangoproject.com/en/2.0/ref/contrib/sitemaps/
 sitemaps = {}
@@ -32,7 +33,7 @@ urlpatterns = [
     re_path(r'^tellme/', include('tellme.urls')),
     re_path(r'^robots.txt', include('robots.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    re_path(r'^csp-report/$', security_views.csp_report, kwargs={'csp_save':True,'csp_log':True}),
+    re_path(r'^report-csp/$', report_csp, name="report_csp"),
     re_path(r'^cms/', include(wagtailadmin_urls)),
     re_path(r'^documents/', include(wagtaildocs_urls)),
     re_path(r'^blog/', include(wagtail_urls)),
