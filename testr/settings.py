@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
 
 # Application definition
 APP_NAME = 'Pregression'
+APP_LEGAL_NAME = 'Pregression, Inc.'
 WAGTAIL_SITE_NAME = APP_NAME
 APP_TITLE_DELIMITER = '|'
 ESTABLISHED_YEAR = 2018
@@ -90,6 +91,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -230,16 +232,15 @@ PASSWORD_HASHERS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
+LANGUAGE_CODE = 'en'
+LANGUAGE_COOKIE_NAME = '__Host-pregression_language'
 TIME_ZONE = 'America/Chicago'
-
+LOCALE_PATH = [
+    os.path.join(BASE_DIR, 'locale')
+]
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
@@ -262,14 +263,19 @@ WHITELIST_ROUTES = [
     settings.LOGIN_URL,
     STATIC_URL,
     MEDIA_URL,
+    r'/[a-z]{2}',
+    r'/[a-z]{2}-[A-Z]{2}',
     '/admin/',
     '/admin/login/',
     '/accounts/password_reset/',
     '/accounts/signup/',
     '/accounts/google/login/',
-    '/terms/',
-    '/privacy/',
-    '/license/',
+    r'/[a-z]{2}-[A-Z]{2}/terms/',
+    r'/[a-z]{2}-[A-Z]{2}/privacy/',
+    r'/[a-z]{2}-[A-Z]{2}/license/',
+    r'/[a-z]{2}/terms/',
+    r'/[a-z]{2}/privacy/',
+    r'/[a-z]{2}/license/',
     r'/blog/*',
     r'/tags/*',
     r'/subscribe/*',

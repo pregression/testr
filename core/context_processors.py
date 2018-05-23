@@ -29,6 +29,7 @@ def formatted_copyright_year(request):
 def app_name(request):
     return {
         'app_name': settings.APP_NAME,
+        'app_legal_name': settings.APP_LEGAL_NAME,
     }
 
 
