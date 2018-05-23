@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 from core.models import Owner
 from .models import Project
 from .forms import NewProjectForm
 
 
+@login_required
 def index(request):
     user = request.user
     owner_ids = Owner.objects.filter(user_id__exact=user.id)
@@ -14,6 +16,7 @@ def index(request):
     return render(request, 'projects/index.html', ctx)
 
 
+@login_required
 def new(request):
     if request.method == 'POST':
         form = NewProjectForm(request.POST)
@@ -36,6 +39,7 @@ def new(request):
     return render(request, 'projects/new.html', { 'form': form })
 
 
+@login_required
 def show(request, name):
     user = request.user
     owner_ids = Owner.objects.filter(user_id__exact=user.id)

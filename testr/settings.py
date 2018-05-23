@@ -101,7 +101,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'core.middleware.AuthRequiredMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'csp.middleware.CSPMiddleware',
     'security.middleware.DoNotTrackMiddleware',
@@ -257,31 +256,6 @@ STATICFILES_FINDERS = [
 
 # Override login redirect
 LOGIN_REDIRECT_URL = '/projects'
-
-# Whitelist routes that don't require login
-WHITELIST_ROUTES = [
-    settings.LOGIN_URL,
-    STATIC_URL,
-    MEDIA_URL,
-    r'/[a-z]{2}',
-    r'/[a-z]{2}-[A-Z]{2}',
-    '/admin/',
-    '/admin/login/',
-    '/accounts/password_reset/',
-    '/accounts/signup/',
-    '/accounts/google/login/',
-    r'/[a-z]{2}-[A-Z]{2}/terms/',
-    r'/[a-z]{2}-[A-Z]{2}/privacy/',
-    r'/[a-z]{2}-[A-Z]{2}/license/',
-    r'/[a-z]{2}/terms/',
-    r'/[a-z]{2}/privacy/',
-    r'/[a-z]{2}/license/',
-    r'/blog/*',
-    r'/tags/*',
-    r'/subscribe/*',
-    '/report-csp/',
-    r'/tellme/*',
-]
 
 # Compressor setup
 COMPRESS_OFFLINE = config('COMPRESS_ASSETS', default=False, cast=bool)
