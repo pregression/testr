@@ -1,11 +1,12 @@
 [report]
 skip_covered = True
 show_missing = True
-fail_under = 95
+fail_under = 87
 
 [run]
-source = ./testr
 omit =
     */tests/*
     ./testr/wsgi.py
     ./testr/settings.py
+    ./src/*
+    manage.py

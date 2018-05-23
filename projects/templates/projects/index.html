@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
 {% load compress %}
+{% load i18n %}
 
 {% block title %}
-Projects {{ title_delimiter}} {{ block.super }}
+{% trans "Projects" %} {{ title_delimiter}} {{ block.super }}
 {% endblock %}
 
 {% block subnav %}
-<h1>Projects</h1>
+<h1>{% trans "Projects" %}</h1>
 {% endblock %}
 
 {% block content %}
@@ -27,7 +28,7 @@ Projects {{ title_delimiter}} {{ block.super }}
         </p>
     </div>
     <div class="Projects--createNewCTA">
-        <a href="{% url 'projects_new' %}" class="btn btn-primary">Create New Project</a>
+        <a href="{% url 'projects_new' %}" class="btn btn-primary">{% trans "Create New Project" %}</a>
     </div>
 </div>
 {% endif %}

@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<!--
+    Copyright (C) {{ formatted_copyright_year }} {{ app_legal_name }}
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
 {% load static %}
 {% load compress %}
 <html lang="en" dir="ltr">
@@ -18,11 +34,19 @@
         <link rel="stylesheet" href="/static/vendor/css/bootstrap.min.css">
         <link rel="stylesheet" href="{% static 'tellme/feedback.min.css' %}">
         {% endcompress %}
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        {% block jquery %}
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+        {% endblock %}
+        {% block ajax_csrf %}
+            {% compress js file %}
+                <script src="/static/core/js/ajaxCSRF.js"></script>
+            {% endcompress %}
+        {% endblock %}
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js" integrity="sha384-TU+2E2omvu82iO/QZZM+yUCKqjYiahza2KDH8CKKcFHUA9+Al0dxAY8DejxPwohG" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js" integrity="sha384-2aj/bCHsl/sW9Br7V4KFv8G2BBHuiQ7ZOzY+OxTo7whNRvJY4FauRJbna1IVAvos" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js" integrity="sha384-tQnfZyyk7ZX5leaWDkq9qAvwSkSvH0ouVfrxLn12X9Y2DS8nDa8pHXFH9LLKJdo/" crossorigin="anonymous"></script>
         {% compress js file %}
+            <script src="/static/js/array.js"></script>
             <script src="/static/js/app.js"></script>
         {% endcompress %}
     </head>
@@ -35,6 +59,27 @@
         {% endblock layout %}
         {% block chromeless %}
         {% endblock chromeless %}
-        {% include "tellme/js_inc.html" %}
+        {% block enable_tellme %}
+            <script src="{% static 'tellme/feedback.min.js' %}"></script>
+            <script type="text/javascript">
+                $(function () {
+                    $.feedback({
+                        ajaxURL: "{% url 'tellme:post_feedback' %}",
+                        html2canvasURL: "{% static 'tellme/html2canvas.min.js' %}",
+                        feedbackButton: "#feedback-btn",
+                        initButtonText: "{% filter escapejs %}{%  include 'tellme/initButtonText.txt' %}{% endfilter %}",
+                        postHTML: false,
+                        tpl: {
+                            description: "{% filter escapejs %}{%  include 'tellme/tpl-description.html' %}{% endfilter %}",
+                            highlighter: "{% filter escapejs %}{%  include 'tellme/tpl-highlighter.html' %}{% endfilter %}",
+                            overview:	 "{% filter escapejs %}{%  include 'tellme/tpl-overview.html' %}{% endfilter %}",
+                            submitSuccess:"{% filter escapejs %}{%  include 'tellme/tpl-submit-success.html' %}{% endfilter %}",
+                            submitError: "{% filter escapejs %}{%  include 'tellme/tpl-submit-error.html' %}{% endfilter %}"
+                        },
+                        initialBox: true
+                    });
+                });
+            </script>
+        {% endblock %}
     </body>
 </html>

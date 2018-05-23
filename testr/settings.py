@@ -32,10 +32,12 @@ ALLOWED_HOSTS = [
     'localhost',
     '.herokuapp.com',
     '.pregression.com',
+    '.pregression.ssl',
 ]
 
 # Application definition
 APP_NAME = 'Pregression'
+APP_LEGAL_NAME = 'Pregression, Inc.'
 WAGTAIL_SITE_NAME = APP_NAME
 APP_TITLE_DELIMITER = '|'
 ESTABLISHED_YEAR = 2018
@@ -81,6 +83,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'robots',
     'security',
+    'sslserver',
     'taggit',
     'tellme',
 ]
@@ -88,6 +91,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -97,11 +101,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'core.middleware.AuthRequiredMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'csp.middleware.CSPMiddleware',
     'security.middleware.DoNotTrackMiddleware',
     'security.middleware.ContentNoSniff',
-    'security.middleware.ContentSecurityPolicyMiddleware',
     'security.middleware.XssProtectMiddleware',
     'security.middleware.XFrameOptionsMiddleware',
 ]
@@ -228,16 +231,15 @@ PASSWORD_HASHERS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
+LANGUAGE_CODE = 'en'
+LANGUAGE_COOKIE_NAME = '__Host-pregression_language'
 TIME_ZONE = 'America/Chicago'
-
+LOCALE_PATH = [
+    os.path.join(BASE_DIR, 'locale')
+]
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
@@ -255,35 +257,15 @@ STATICFILES_FINDERS = [
 # Override login redirect
 LOGIN_REDIRECT_URL = '/projects'
 
-# Whitelist routes that don't require login
-WHITELIST_ROUTES = [
-    settings.LOGIN_URL,
-    STATIC_URL,
-    MEDIA_URL,
-    '/admin/',
-    '/admin/login/',
-    '/accounts/password_reset/',
-    '/accounts/signup/',
-    '/accounts/google/login/',
-    '/terms/',
-    '/privacy/',
-    '/license/',
-    r'/blog/*',
-    r'/tags/*',
-]
-
 # Compressor setup
 COMPRESS_OFFLINE = config('COMPRESS_ASSETS', default=False, cast=bool)
-
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.rCSSMinFilter',
 ]
-
 COMPRESS_JS_FILTERS = [
     'compressor.filters.jsmin.SlimItFilter',
 ]
-
 COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
 
 DEFAULT_FROM_EMAIL = "support@pregression.com"
@@ -294,19 +276,19 @@ ANYMAIL = {
 }
 
 # Security
-CSP_MODE = 'report-only'
-CSP_DICT = {
-    "default-src": ["none"],
-    "script-src": ["self", "https://code.jquery.com", "https://cdn.jsdelivr.net"],
-    "style-src": ["self", "https://fonts.googleapis.com"],
-    "img-src": ["self", "https://unsplash.com"],
-    "connect-src": ["self"],
-    "font-src": ["self", "https://fonts.gstatic.com"],
-    "object-src": ["none"],
-    "media-src": ["self"],
-    "frame-src": ["self"],
-    # array of allowed MIME types
-    "plugin-types" : [ "application/pdf" ],
-    "reflected-xss" : 'filter',
-    "report-uri" : "/csp-report/",
-}
+APP_USING_TLS = config('APP_USING_TLS', default=False, cast=bool)
+SECURE_CONTENT_TYPE_NOSNIFF = APP_USING_TLS
+SECURE_SSL_REDIRECT = APP_USING_TLS
+SESSION_COOKIE_NAME = 'TESTRSESSIONID'
+SESSION_COOKIE_SECURE = APP_USING_TLS
+CSRF_USE_SESSIONS = True
+CSRF_COOKIE_NAME = '__Host-csrf'
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SECURE = APP_USING_TLS
+CSP_REPORT_ONLY = False
+CSP_DEFAULT_SRC = ("'self'" ,"https:",)
+CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'", "https://code.jquery.com", "https://cdn.jsdelivr.net",)
+CSP_STYLE_SRC = ("'self'", "'unsafe-inline'", "https://fonts.googleapis.com",)
+CSP_IMG_SRC = ("'self'", "data:", "https://unsplash.com",)
+CSP_FONT_SRC = ("'self'", "https://fonts.gstatic.com",)
+CSP_REPORT_URI = "/report-csp/"

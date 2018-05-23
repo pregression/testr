@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
+{% load i18n %}
 
 {% block title %}
-License {{ title_delimiter }} {{ block.super }}
+{% trans "License" %} {{ title_delimiter }} {{ block.super }}
 {% endblock %}
 
 {% block subnav %}
@@ -656,7 +657,7 @@ License {{ title_delimiter }} {{ block.super }}
     the &quot;copyright&quot; line and a pointer to where the full notice is found.</p>
 
     <pre>
-        Copyright (C) 2017 Evan Duncan
+        Copyright (C) {{ formatted_copyright_year }} {{ app_legal_name }}
 
         This program is free software: you can redistribute it and/or modify
         it under the terms of the GNU Affero General Public License as

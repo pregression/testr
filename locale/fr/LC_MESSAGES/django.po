@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-22 21:09-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: core/templates/core/license.html:5
+msgid "License"
+msgstr ""
+
+#: core/templates/core/partials/footer.html:10
+msgid "Terms"
+msgstr ""
+
+#: core/templates/core/partials/footer.html:16
+#, python-format
+msgid "%(app_name)s is licensed under <a href=\"%(license_url)s\">AGPLv3</a>"
+msgstr ""
+
+#: core/templates/core/terms.html:5 core/templates/core/terms.html:9
+msgid "Terms and Conditions"
+msgstr ""
+
+#: projects/templates/projects/index.html:6
+#: projects/templates/projects/index.html:10
+msgid "Projects"
+msgstr ""
+
+#: projects/templates/projects/index.html:31
+msgid "Create New Project"
+msgstr ""
+
+#: src/django-security/security/auth.py:16
+#, python-format
+msgid "It must contain at least %d characters."
+msgstr ""
+
+#: src/django-security/security/auth.py:25
+msgid "It must contain at least one lowercase letter."
+msgstr ""
+
+#: src/django-security/security/auth.py:31
+msgid "It must contain at least one uppercase letter."
+msgstr ""
+
+#: src/django-security/security/auth.py:37
+msgid "It must contain at least one decimal digit."
+msgstr ""
+
+#: src/django-security/security/auth_throttling/__init__.py:39
+msgid "1 minute"
+msgstr ""
+
+#: src/django-security/security/auth_throttling/__init__.py:41
+#, python-format
+msgid "%d minutes"
+msgstr ""
+
+#: src/django-security/security/auth_throttling/__init__.py:43
+msgid "1 second"
+msgstr ""
+
+#: src/django-security/security/auth_throttling/__init__.py:45
+#, python-format
+msgid "%d seconds"
+msgstr ""
+
+#: src/django-security/security/forms.py:14
+msgid "New password"
+msgstr ""

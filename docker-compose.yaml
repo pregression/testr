@@ -11,10 +11,10 @@ services:
       POSTGRES_DB: testr
       PGDATA: /var/lib/postgresql/9.5/main
     ports:
-    - '5432'
+    - '15432:5432'
   web:
     build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: python3 manage.py runsslserver 0.0.0.0:8000
     volumes:
     - .:/app
     ports:
@@ -23,6 +23,7 @@ services:
     - db
     environment:
       DATABASE_URL: postgres://testr:testr@db/testr
+      APP_USING_TLS: 1
 
 volumes:
   data:

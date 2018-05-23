@@ -1,0 +1,85 @@
+# Pregression Swedish translation
+# Copyright (C) 2018 Pregression, Inc.
+# This file is distributed under the same license as the Pregression package.
+# FIRST AUTHOR <evan.duncan@pregression.com>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-22 21:09-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/templates/core/license.html:5
+msgid "License"
+msgstr "Licens"
+
+#: core/templates/core/partials/footer.html:10
+msgid "Terms"
+msgstr "Villkor"
+
+#: core/templates/core/partials/footer.html:16
+#, python-format
+msgid "%(app_name)s is licensed under <a href=\"%(license_url)s\">AGPLv3</a>"
+msgstr ""
+"%(app_name)s är licensierad enligt <a href=\"%(license_url)s\">AGPLv3</a>"
+
+#: core/templates/core/terms.html:5 core/templates/core/terms.html:9
+msgid "Terms and Conditions"
+msgstr "Villkor"
+
+#: projects/templates/projects/index.html:6
+#: projects/templates/projects/index.html:10
+msgid "Projects"
+msgstr "Projekt"
+
+#: projects/templates/projects/index.html:31
+msgid "Create New Project"
+msgstr "Skapa nytt projekt"
+
+#: src/django-security/security/auth.py:16
+#, python-format
+msgid "It must contain at least %d characters."
+msgstr "Den måste innehålla minst %d tecken"
+
+#: src/django-security/security/auth.py:25
+msgid "It must contain at least one lowercase letter."
+msgstr "Den måste innehålla minst en liten bokstav."
+
+#: src/django-security/security/auth.py:31
+msgid "It must contain at least one uppercase letter."
+msgstr "Den måste innehålla minst en stor bokstav."
+
+#: src/django-security/security/auth.py:37
+msgid "It must contain at least one decimal digit."
+msgstr "Det måste innehålla minst en decimalsiffra."
+
+#: src/django-security/security/auth_throttling/__init__.py:39
+msgid "1 minute"
+msgstr "1 minut"
+
+#: src/django-security/security/auth_throttling/__init__.py:41
+#, python-format
+msgid "%d minutes"
+msgstr "%d minuter"
+
+#: src/django-security/security/auth_throttling/__init__.py:43
+msgid "1 second"
+msgstr "1 skund"
+
+#: src/django-security/security/auth_throttling/__init__.py:45
+#, python-format
+msgid "%d seconds"
+msgstr "%d sekunder"
+
+#: src/django-security/security/forms.py:14
+msgid "New password"
+msgstr "Nytt lösenord"
