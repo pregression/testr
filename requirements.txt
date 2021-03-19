@@ -23,7 +23,7 @@ django-sslserver==0.20
 django-taggit==0.22.2
 django-tellme==0.6.5
 django-treebeard==4.2.1
-djangorestframework==3.8.2
+djangorestframework==3.11.2
 draftjs-exporter==2.0.0
 Faker==0.8.15
 gunicorn==19.7.1
