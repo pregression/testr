@@ -60,7 +60,7 @@ ua-parser==0.8.0
 Unidecode==0.4.21
 urllib3==1.22
 virtualenv==15.1.0
-wagtail==2.0.1
+wagtail==2.11.6
 webencodings==0.5.1
 whitenoise==3.3.1
 Willow==1.1
